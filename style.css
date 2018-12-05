@@ -1,0 +1,42 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+}
+
+aside {
+  border-right: 2px solid lightgrey;
+}
+
+.flex-title-area {
+  display: flex;
+  justify-content: space-around;
+}
+
+.puzzle-section {
+  height: 400px;
+}
+
+.actions-btns {
+  display: grid;
+  grid-template-columns: repeat(3, 70px);
+  justify-content: center;
+  justify-content: space-evenly;
+}
+
+.letters-section {
+  display: grid;
+  grid-template-columns: repeat(13, 60px);
+  justify-content: center;
+}
+
+.letters-section p {
+  border: 1px solid tomato;
+  height: 35px;
+  width: 35px;
+}

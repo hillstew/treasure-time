@@ -3,7 +3,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Name of Game</title>
 </head>
 <body>
   <aside>
@@ -12,56 +13,56 @@
     <article>Player 3</article>
   </aside>
   <main>
-    <div>
+    <div class="flex-title-area">
       <h1>Name of Game</h1>
       <button>Restart</button>
     </div>
-    <div>
+    <div class="flex-title-area">
       <p>Category</p>
       <p>Round</p>
     </div>
-    <section>
+    <section class="puzzle-section js-puzzle-section">
       <!-- where puzzle letters live, created in js -->
     </section>
-    <div>
+    <div class="actions-btns">
       <button>Solve</button>
       <button>Spin</button>
       <button>Buy a Vowel</button>
     </div>
-  </main>
-  <section>
     <section>
-      <p class="vowel js-letters">A</p>
-      <p class="consonant js-letters">B</p>
-      <p class="consonant js-letters">C</p>
-      <p class="consonant js-letters">D</p>
-      <p class="vowel js-letters">E</p>
-      <p class="consonant js-letters">F</p>
-      <p class="consonant js-letters">G</p>
-      <p class="consonant js-letters">H</p>
-      <p class="vowel js-letters">I</p>
-      <p class="consonant js-letters">J</p>
-      <p class="consonant js-letters">K</p>
-      <p class="consonant js-letters">L</p>
-      <p class="consonant js-letters">M</p>
-      <p class="consonant js-letters">N</p>
-      <p class="vowel js-letters">O</p>
-      <p class="consonant js-letters">P</p>
-      <p class="consonant js-letters">Q</p>
-      <p class="consonant js-letters">R</p>
-      <p class="consonant js-letters">S</p>
-      <p class="consonant js-letters">T</p>
-      <p class="vowel js-letters">U</p>
-      <p class="consonant js-letters">V</p>
-      <p class="consonant js-letters">W</p>
-      <p class="consonant js-letters">X</p>
-      <p class="consonant js-letters">Y</p>
-      <p class="consonant js-letters">Z</p>
+      <section class="letters-section">
+        <p class="vowel js-letters">A</p>
+        <p class="consonant js-letters">B</p>
+        <p class="consonant js-letters">C</p>
+        <p class="consonant js-letters">D</p>
+        <p class="vowel js-letters">E</p>
+        <p class="consonant js-letters">F</p>
+        <p class="consonant js-letters">G</p>
+        <p class="consonant js-letters">H</p>
+        <p class="vowel js-letters">I</p>
+        <p class="consonant js-letters">J</p>
+        <p class="consonant js-letters">K</p>
+        <p class="consonant js-letters">L</p>
+        <p class="consonant js-letters">M</p>
+        <p class="consonant js-letters">N</p>
+        <p class="vowel js-letters">O</p>
+        <p class="consonant js-letters">P</p>
+        <p class="consonant js-letters">Q</p>
+        <p class="consonant js-letters">R</p>
+        <p class="consonant js-letters">S</p>
+        <p class="consonant js-letters">T</p>
+        <p class="vowel js-letters">U</p>
+        <p class="consonant js-letters">V</p>
+        <p class="consonant js-letters">W</p>
+        <p class="consonant js-letters">X</p>
+        <p class="consonant js-letters">Y</p>
+        <p class="consonant js-letters">Z</p>
+      </section>
+      <section>
+      <!-- user instructions -->
+      </section>
     </section>
-    <section>
-    <!-- user instructions -->
-    </section>
-  </section>
+  </main> 
 </body>
   <script type="text/javascript" src="dataset.js"></script>
   <script type="text/javascript" src="domUpdates.js"></script>
