@@ -9,6 +9,14 @@ body {
   grid-template-columns: 210px 1fr;
 }
 
+.start-screen {
+  background-color: tomato;
+  height: 800px;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
 aside {
   border-right: 2px solid lightgrey;
 }

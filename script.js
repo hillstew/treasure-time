@@ -1,0 +1,2 @@
+
+domUpdates.hideStartScreen();
