@@ -1,2 +1,6 @@
+const game = new Game();
 
-domUpdates.hideStartScreen();
+$('.js-start-btn').on('click', function() {
+  game.start();
+});
+
