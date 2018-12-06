@@ -11,5 +11,7 @@ class BonusWheel extends Wheel {
     this.bonusElement = null;
   }
 
-  awardBonusElement();
+  awardBonusElement() {
+
+  }
 }

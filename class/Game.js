@@ -17,4 +17,5 @@ class Game {
       this.players.push(player);
     });
   }
+
 }
