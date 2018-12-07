@@ -31,7 +31,7 @@ class Game {
     const puzzleBank = puzzleKeys.reduce((puzzleArray, puzzleKey) => {
       puzzleArray.push(...data.puzzles[puzzleKey].puzzle_bank)
       return puzzleArray;
-    }, [])
+    }, []);
     return puzzleBank;
   }
 

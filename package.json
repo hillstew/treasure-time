@@ -4,7 +4,8 @@
   "description": "OOP game based off of Wheel of Fortune",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha"
+    "test": "./node_modules/mocha/bin/mocha",
+    "eslint": "./node_modules/eslint/bin/eslint.js ./class/*.js"
   },
   "repository": {
     "type": "git",
