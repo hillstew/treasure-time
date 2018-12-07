@@ -12,13 +12,16 @@ const domUpdates = {
     ];
   },
   displayPuzzle(answer, category) {
-    console.log(answer)
     $('.js-category').text(category)
     let puzzleSection = $('.js-puzzle-section')
     answer.forEach((character) => {
       puzzleSection.append(`<p>${character}</p>`)
     })
-  }
+  },
+}
+
+if (typeof module !== 'undefined') {
+  module.exports = domUpdates;
 }
 
 

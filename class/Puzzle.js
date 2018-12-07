@@ -5,7 +5,7 @@ class Puzzle {
     this.description = puzzleObj.description;
     this.numberOfWords = puzzleObj.number_of_words;
     this.totalLetters = puzzleObj.total_number_of_letters;
-    this.lettersInFirst = puzzleObj.first_word
+    this.lettersInFirst = puzzleObj.first_word;
   }
 }
 
@@ -14,4 +14,9 @@ class BonusPuzzle extends Puzzle {
     super();
     this.bonusPuzzle = bonusPuzzle;
   }
+}
+
+
+if (typeof module !== 'undefined') {
+  module.exports = Puzzle;
 }

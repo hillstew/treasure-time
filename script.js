@@ -6,4 +6,4 @@ $('.js-start-btn').on('click', function() {
 
 $('.js-spin-btn').on('click', function() {
   game.currentWheel.spin();
-})
+});

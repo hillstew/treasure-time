@@ -8,7 +8,6 @@ class Game {
     this.currentWheel = null;
   }
 
-
   start() {
     const namesArray = domUpdates.getPlayerNames();
     domUpdates.hideStartScreen();
@@ -16,7 +15,8 @@ class Game {
     this.createPlayers(namesArray);
     this.createPuzzles();
     this.currentPuzzle = new Puzzle(this.puzzles.pop())
-    domUpdates.displayPuzzle((Array.from(this.currentPuzzle.answer)), this.currentPuzzle.category)
+    domUpdates.displayPuzzle((Array.from(this.currentPuzzle.answer)), 
+      this.currentPuzzle.category)
   }
 
   createPlayers(namesArray) {
@@ -47,7 +47,7 @@ class Game {
       this.puzzles.push(...puzzleBank.splice(index, 1));
     }
   }
-
+  
   createWheel() {
     const wheelElements = [];
     const wheelBank = data.wheel;
@@ -57,4 +57,9 @@ class Game {
     }
     return new Wheel(wheelElements);
   }
+}
+
+
+if (typeof module !== 'undefined') {
+  module.exports = Game;
 }

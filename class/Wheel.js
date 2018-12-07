@@ -5,8 +5,6 @@ class Wheel {
   }
 
   spin() {
-    console.log("i am spinnnnningggggggg")
-    console.log(this.elements)
   }
 }
 
@@ -19,3 +17,8 @@ class BonusWheel extends Wheel {
   awardBonusElement() {
   }
 }
+
+if (typeof module !== 'undefined') {
+  module.exports = Wheel;
+}
+

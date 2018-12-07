@@ -9,3 +9,7 @@ class Player {
     this.currentScore++;
   }
 }
+
+if (typeof module !== 'undefined') {
+  module.exports = Player;
+}
