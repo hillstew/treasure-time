@@ -4,13 +4,19 @@ class Game {
     this.players = [];
     this.playersTurnIndex = 0;
     this.puzzles = [];
+    this.currentPuzzle = null;
+    this.currentWheel = null;
   }
 
+
   start() {
-    let namesArray = domUpdates.getPlayerNames();
+    const namesArray = domUpdates.getPlayerNames();
     domUpdates.hideStartScreen();
+    this.currentWheel = this.createWheel();
     this.createPlayers(namesArray);
     this.createPuzzles();
+    this.currentPuzzle = new Puzzle(this.puzzles.pop())
+    domUpdates.displayPuzzle((Array.from(this.currentPuzzle.answer)), this.currentPuzzle.category)
   }
 
   createPlayers(namesArray) {
@@ -41,9 +47,14 @@ class Game {
       this.puzzles.push(...puzzleBank.splice(index, 1));
     }
   }
-  
- 
-  
 
-
+  createWheel() {
+    const wheelElements = [];
+    const wheelBank = data.wheel;
+    for (let i = 1; i < 7; i++) {
+      let index = this.createRandomNumber(wheelBank.length)
+      wheelElements.push(...wheelBank.splice(index, 1))
+    }
+    return new Wheel(wheelElements);
+  }
 }
