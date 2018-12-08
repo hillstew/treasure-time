@@ -49,7 +49,7 @@ describe('it should create a game ', function() {
     expect(bankOfPuzzles).to.be.instanceOf(Array);
     expect(bankOfPuzzles).to.have.lengthOf(96);
     bankOfPuzzles.forEach(function(puzzle) {
-        expect(puzzle).to.be.an('object').that.has.all.keys('category', 'number_of_words', 'total_number_of_letters', 'first_word', 'description', 'correct_answer');
+      expect(puzzle).to.be.an('object').that.has.all.keys('category', 'number_of_words', 'total_number_of_letters', 'first_word', 'description', 'correct_answer');
     });
   });
 
@@ -68,7 +68,8 @@ describe('it should create a game ', function() {
   });
 
   it('should create an instance of Wheel', function() {
-    let wheel = game.createWheel();
-    expect(wheel).to.be.instanceOf(Wheel);
+    game.createWheel();
+    expect(game.currentWheel).to.be.instanceOf(Wheel);
+    expect(game.currentWheel).to.have.property('elements').with.lengthOf(6);
   });
 })

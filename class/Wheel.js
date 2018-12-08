@@ -1,7 +1,20 @@
 class Wheel {
-  constructor(elements) {
-    this.elements = elements;
+  constructor() {
+    this.elements = []
     this.currentElement = null;
+  }
+
+  createWheelElements() {
+    const wheelBank = data.wheel;
+    for (let i = 1; i < 7; i++) {
+      let index = this.createRandomNumber(wheelBank.length)
+      this.elements.push(...wheelBank.splice(index, 1))
+    }
+  }
+
+  createRandomNumber(maxRange) {
+    const randomIndex = Math.floor(Math.random() * Math.floor(maxRange));
+    return randomIndex;
   }
 
   spin() {

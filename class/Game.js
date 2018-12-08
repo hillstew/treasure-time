@@ -11,7 +11,7 @@ class Game {
   start() {
     const namesArray = domUpdates.getPlayerNames();
     domUpdates.hideStartScreen();
-    this.currentWheel = this.createWheel();
+    this.createWheel();
     this.createPlayers(namesArray);
     this.createPuzzles();
     this.currentPuzzle = new Puzzle(this.puzzles.pop())
@@ -49,13 +49,8 @@ class Game {
   }
   
   createWheel() {
-    const wheelElements = [];
-    const wheelBank = data.wheel;
-    for (let i = 1; i < 7; i++) {
-      let index = this.createRandomNumber(wheelBank.length)
-      wheelElements.push(...wheelBank.splice(index, 1))
-    }
-    return new Wheel(wheelElements);
+    this.currentWheel = new Wheel();
+    this.currentWheel.createWheelElements();
   }
 }
 
