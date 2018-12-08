@@ -7,6 +7,27 @@
 body {
   display: grid;
   grid-template-columns: 210px 1fr;
+  font-family: 'Assistant', sans-serif;
+}
+
+.blue-bright {
+  color:#125af5;
+}
+
+.blue-light {
+  color: #b8cefb;
+}
+
+.blue-pale {
+  color: #e8effd;
+}
+
+.gray-dark {
+  color: #575758;
+}
+
+.gray-mid {
+  color: #b1b2b4;
 }
 
 .start-screen {

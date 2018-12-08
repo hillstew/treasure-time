@@ -250,12 +250,12 @@ const data = {
           number_of_words: 2,
           total_number_of_letters: 13,
           first_word: 7, 
-          description: 'Puzzles pertaining to the decade in question.',
+          description:'Puzzles pertaining to the decade in question.',
           correct_answer: 'Britney Spears',
         },
         {  
           category: 'Around The House',
-          number_of_words: 2,
+          number_of_words: 1,
           total_number_of_letters: 12,
           first_word: 7,
           description: 'Location or object(s) found within a typical house.',
@@ -266,7 +266,7 @@ const data = {
           number_of_words: 2,
           total_number_of_letters: 9,
           first_word: 4, 
-          description: 'Puzzles pertaining to the decade in question.',
+          description:'Puzzles pertaining to the decade in question.',
           correct_answer: 'Lite Brite',
         },
         {  
@@ -282,7 +282,7 @@ const data = {
           number_of_words: 2,
           total_number_of_letters: 9,
           first_word: 5, 
-          description: 'Puzzles pertaining to the decade in question.',
+          description:'Puzzles pertaining to the decade in question.',
           correct_answer: 'South Park',
         },
         {  
@@ -306,7 +306,7 @@ const data = {
           number_of_words: 2,
           total_number_of_letters: 6,
           first_word: 3, 
-          description: 'Puzzles pertaining to the decade in question.',
+          description:'Puzzles pertaining to the decade in question.',
           correct_answer: 'Fun Dip',
         },
          {  
@@ -314,7 +314,7 @@ const data = {
           number_of_words: 2,
           total_number_of_letters: 10,
           first_word: 6, 
-          description: 'Puzzles pertaining to the decade in question.',
+          description:'Puzzles pertaining to the decade in question.',
           correct_answer: 'Celine Dion',
         },
         {  
@@ -364,7 +364,7 @@ const data = {
           description: 'Location or object(s) found within a typical house.',
           correct_answer: 'Windowpanes',
         },{  
-          category: 'Rhyme Time',
+          category:'Rhyme Time',
           number_of_words: 2,
           total_number_of_letters: 8,
           first_word: 4,
@@ -448,7 +448,7 @@ const data = {
         },
         {  
           category: 'Around The House',
-          number_of_words: 3,
+          number_of_words: 1,
           total_number_of_letters: 13,
           first_word: 5,
           description: 'Location or object(s) found within a typical house.',
@@ -520,7 +520,7 @@ const data = {
         },
         {  
           category: 'Phrase',
-          number_of_words: 2,
+          number_of_words: 3,
           total_number_of_letters: 8,
           first_word: 5, 
           description: 'Any two (or more) related phrases separated by a comma or otherwise used consecutively',
@@ -596,14 +596,14 @@ const data = {
           correct_answer: 'Meet And Greet',
         },
         {  
-          category: 'Rhyme Time',
+          category:'Rhyme Time',
           number_of_words: 3,
           total_number_of_letters: 11,
           first_word: 2,
           description: 'Rhyming word(s) or phrase(s).',
           correct_answer: 'In Like Flynn',
         },{  
-          category: 'Rhyme Time',
+          category:'Rhyme Time',
           number_of_words: 3,
           total_number_of_letters: 11,
           first_word: 5,
@@ -620,7 +620,7 @@ const data = {
           number_of_words: 4,
           total_number_of_letters: 17,
           first_word: 4, 
-          description: 'Location or object(s) found within a typical house.',
+          description:'Location or object(s) found within a typical house.',
           correct_answer: 'Roll Of Toilet Paper',
         },
         {  
@@ -628,7 +628,7 @@ const data = {
           number_of_words: 4,
           total_number_of_letters: 14,
           first_word: 5, 
-          description: 'Puzzles pertaining to the decade in question.',
+          description:'Puzzles pertaining to the decade in question.',
           correct_answer: 'Saved By The Bell',
         },
         {  
@@ -636,12 +636,12 @@ const data = {
           number_of_words: 4,
           total_number_of_letters: 18,
           first_word: 3, 
-          description: 'Puzzles pertaining to the decade in question.',
+          description:'Puzzles pertaining to the decade in question.',
           correct_answer: 'The Mickey Mouse Club',
         },
         {  
           category: 'Around The House',
-          number_of_words: 4,
+          number_of_words: 1,
           total_number_of_letters: 17,
           first_word: 4,
           description: 'Location or object(s) found within a typical house.',
@@ -652,7 +652,7 @@ const data = {
           number_of_words: 4,
           total_number_of_letters: 24,
           first_word: 6, 
-          description: 'Puzzles pertaining to the decade in question.',
+          description:'Puzzles pertaining to the decade in question.',
           correct_answer: 'There\'s Something About Mary',
         },
         {  
@@ -668,7 +668,7 @@ const data = {
           number_of_words: 4,
           total_number_of_letters: 18,
           first_word: 3, 
-          description: 'Puzzles pertaining to the decade in question.',
+          description:'Puzzles pertaining to the decade in question.',
           correct_answer: 'Red Hot Chili Peppers',
         },
         {  
@@ -692,7 +692,7 @@ const data = {
           number_of_words: 4,
           total_number_of_letters: 22,
           first_word: 3, 
-          description: 'Puzzles pertaining to the decade in question.',
+          description:'Puzzles pertaining to the decade in question.',
           correct_answer: 'Six Degrees of Separation',
         },
           {  
@@ -796,7 +796,7 @@ const data = {
           description: 'Rhyming word(s) or phrase(s).',
           correct_answer: 'An Attitude of Gratitude',
         },{  
-          category: 'Rhyme Time',
+          category:'Rhyme Time',
           number_of_words: 4,
           total_number_of_letters: 16,
           first_word: 3,
