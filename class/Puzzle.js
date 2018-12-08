@@ -7,6 +7,13 @@ class Puzzle {
     this.totalLetters = puzzleObj.total_number_of_letters;
     this.lettersInFirst = puzzleObj.first_word;
   }
+
+  validateGuess(selectedLetter) {
+    if (this.answer.toUpperCase().includes(selectedLetter)) {
+      return true;
+    }
+    return false;
+  }
 }
 
 class BonusPuzzle extends Puzzle {

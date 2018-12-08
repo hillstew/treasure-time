@@ -7,3 +7,8 @@ $('.js-start-btn').on('click', function() {
 $('.js-spin-btn').on('click', function() {
   game.currentWheel.spin();
 });
+
+$('.js-letters').on('click', function(e) {
+  let playerSelection = $(this).text()
+  game.intakeGuess(playerSelection);
+})

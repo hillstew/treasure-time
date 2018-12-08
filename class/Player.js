@@ -5,8 +5,8 @@ class Player {
     this.grandScore = 0;
   }
 
-  updateScore() {
-    this.currentScore++;
+  updateScore(elementValue) {
+    this.currentScore += elementValue;
   }
 }
 

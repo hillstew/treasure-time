@@ -30,4 +30,10 @@ describe('it should create a wheel', function() {
     let num = wheel.createRandomNumber(maxRange);
     expect(num).to.be.within(0, maxRange);
   });
+
+  it('should return one element from current wheel elements', function() {
+    wheel.createWheelElements()
+    wheel.spin();
+    expect(wheel.currentElement).to.be.oneOf(wheel.elements)
+  })
 })

@@ -18,6 +18,13 @@ const domUpdates = {
       puzzleSection.append(`<p>${character}</p>`)
     })
   },
+  displaySpunElement(element) {
+    $('.js-user-instructions').append(`<p>You turned towards a treasure trove of ${element}</p>`)
+  },
+  disableElement(nameOfClass) {
+    $(`${nameOfClass}`).prop('disabled', true);
+
+  }
 }
 
 if (typeof module !== 'undefined') {
