@@ -5,7 +5,7 @@ class Wheel {
   }
 
   createWheelElements() {
-    const wheelBank = data.wheel;
+    const wheelBank = data.wheel.concat();
     for (let i = 1; i < 7; i++) {
       let index = this.createRandomNumber(wheelBank.length)
       this.elements.push(...wheelBank.splice(index, 1))

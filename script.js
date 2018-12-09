@@ -11,7 +11,7 @@ $('.js-spin-btn').on('click', function() {
 $('.js-letters').on('click', function(e) {
   let playerSelection = $(this).text();
   game.intakeGuess(playerSelection);
-})
+});
 
 $("article").hover(
   function() {
