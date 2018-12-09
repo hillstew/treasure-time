@@ -17,8 +17,7 @@ class Game {
     this.createPuzzles();
     this.currentPuzzle = new Puzzle(this.puzzles.pop());
     domUpdates.displayPuzzle((Array.from(this.currentPuzzle.answer)), this.currentPuzzle.category);
-    console.log(this.currentPuzzle.answer);
-    // domUpdates.displayPuzzle(this.currentPuzzle.answer, this.currentPuzzle.category)
+    domUpdates.displayCurrentRound(this.currentRound);
   }
 
   createPlayers(namesArray) {

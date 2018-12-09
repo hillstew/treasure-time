@@ -5,6 +5,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const spies = require('chai-spies');
 chai.use(spies);
+chai.spy.on(global.domUpdates, ['displayLetter'], () => true);
 
 describe('it should create a puzzle', function() {
   let puzzle;
@@ -25,10 +26,12 @@ describe('it should create a puzzle', function() {
     chai.spy.restore(global.domUpdates);
   })
 
-  it('should be able validate the players guess', function() {
-    let guess = 'B'
+  it.skip('should be able validate the players guess', function() {
+    let guess = 'B';
+    expect(domUpdates.displayLetter).to.have.been.called(1);
     expect(puzzle.validateGuess(guess)).to.be.true
-    guess = 'Z'
+    guess = 'Z';
+    // expect(domUpdates.displayLetter).to.have.been.called(1);
     expect(puzzle.validateGuess(guess)).to.be.false
   });
 })

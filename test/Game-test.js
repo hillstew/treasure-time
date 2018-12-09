@@ -9,7 +9,7 @@ const Game = require('../class/Game.js');
 const spies = require('chai-spies');
 chai.use(spies);
 chai.spy.on(global.domUpdates, ['getPlayerNames'], () => ['first', 'second', 'third']);
-chai.spy.on(global.domUpdates, ['hideStartScreen', 'displayPuzzle'], () => true);
+chai.spy.on(global.domUpdates, ['hideStartScreen', 'displayPuzzle', 'displayPlayerNames', 'displayCurrentRound'], () => true);
 
 describe('it should create a game ', function() {
   let game;
@@ -26,11 +26,13 @@ describe('it should create a game ', function() {
     game.start();
     expect(domUpdates.getPlayerNames).to.have.been.called(1);
     expect(domUpdates.hideStartScreen).to.have.been.called(1);
+    expect(domUpdates.displayPlayerNames).to.have.been.called(1);
     expect(game.currentWheel).to.have.property('elements').with.lengthOf(6);
     expect(game).to.have.property('players').with.lengthOf(3);
     expect(game).to.have.property('puzzles').with.lengthOf(4);
     expect(game.currentPuzzle).to.be.an.instanceOf(Puzzle);
     expect(domUpdates.displayPuzzle).to.have.been.called(1);
+    expect(domUpdates.displayCurrentRound).to.have.been.called(1);
   });
   
   it('it should instanciate three players from Player class', function() {

@@ -1,6 +1,6 @@
 class Puzzle {
   constructor(puzzleObj) {
-    this.answer = puzzleObj.correct_answer;
+    this.answer = (puzzleObj.correct_answer).toUpperCase();
     this.category = puzzleObj.category;
     this.description = puzzleObj.description;
     this.numberOfWords = puzzleObj.number_of_words;
@@ -10,6 +10,7 @@ class Puzzle {
 
   validateGuess(selectedLetter) {
     if (this.answer.toUpperCase().includes(selectedLetter)) {
+      domUpdates.displayLetter(selectedLetter);
       return true;
     }
     return false;

@@ -50,6 +50,14 @@ const domUpdates = {
       $(this).find('h2').text(names[index]);
       index++;
     });
+  },
+
+  displayLetter(letter) {
+    $('.js-puzzle-section').find(`p:contains(${letter})`).css('color', '#125af5');
+  },
+
+  displayCurrentRound(round) {
+    $('.js-round-display').text(`Round ${round}`);
   }
 }
 
