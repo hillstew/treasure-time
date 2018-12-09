@@ -16,6 +16,7 @@ class Puzzle {
   }
 }
 
+
 class BonusPuzzle extends Puzzle {
   constructor() {
     super();

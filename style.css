@@ -5,7 +5,6 @@
 }
 
 body {
-  padding-left: 2%;
   background-color: #f6f7fa;
   display: grid;
   grid-template-columns: 170px 1fr;
@@ -14,6 +13,10 @@ body {
 
 main {
   margin: 0 auto;
+}
+
+aside {
+  padding-left: 10%;
 }
 
 .blue-bright {
@@ -101,7 +104,7 @@ main {
 .puzzle-section p {
   border-bottom: 5px solid #125af5;
   border-radius: 1px;
-  color: #f6f7fa;
+  /*color: #f6f7fa;*/
   font-size: 2rem;
   font-weight: 500;
   height: 50px;
@@ -120,7 +123,7 @@ main {
   display: grid;
 }
 
-.button-section {
+.user-section {
   display: flex;
 }
 

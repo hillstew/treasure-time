@@ -11,6 +11,7 @@ class Game {
   start() {
     const namesArray = domUpdates.getPlayerNames();
     domUpdates.hideStartScreen();
+    domUpdates.displayPlayerNames(namesArray);
     this.createWheel();
     this.createPlayers(namesArray);
     this.createPuzzles();
@@ -55,12 +56,13 @@ class Game {
 
   intakeGuess(userGuess) {
     if (this.currentPuzzle.validateGuess(userGuess)) {
-      this.players[this.playersTurnIndex].updateScore(this.currentWheel.currentElement)
+      this.players[this.playersTurnIndex].updateScore(this.currentWheel.currentElement);
     } else if (this.playersTurnIndex < (this.players.length - 1)) {
-      this.playersTurnIndex++
+      this.playersTurnIndex++;
     } else {
       this.playersTurnIndex = 0;
     }
+    domUpdates.enableElement('.js-spin-btn');
   }
 }
 

@@ -7,6 +7,7 @@ class Player {
 
   updateScore(elementValue) {
     this.currentScore += elementValue;
+    domUpdates.displayUpdatedScore(this.currentScore, this.name);
   }
 }
 
