@@ -1,10 +1,15 @@
 global.data = require('../dataset.js');
 global.domUpdates = require('../domUpdates.js');
-const Wheel = require('../class/Wheel.js');
+global.Player = require('../class/Player.js');
+global.Puzzle = require('../class/Puzzle.js');
+global.Game = require('../class/Game.js');
 const chai = require('chai');
 const expect = chai.expect;
+const Wheel = require('../class/Wheel.js');
 const spies = require('chai-spies');
 chai.use(spies);
+chai.spy.on(global.domUpdates, ['displaySpunElement', 'disableElement'], () => true);
+
 
 describe('it should create a wheel', function() {
   let wheel;
@@ -31,9 +36,12 @@ describe('it should create a wheel', function() {
     expect(num).to.be.within(0, maxRange);
   });
 
-  it('should return one element from current wheel elements', function() {
+  it.skip('should return one element from current wheel elements', function() {
     wheel.createWheelElements()
     wheel.spin();
     expect(wheel.currentElement).to.be.oneOf(wheel.elements)
-  })
+    expect(domUpdates.displaySpunElement).to.have.been.called(1);
+    expect(domUpdates.disableElement).to.have.been.called(1);
+    
+  });
 })

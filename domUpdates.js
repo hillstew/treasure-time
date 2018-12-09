@@ -23,7 +23,6 @@ const domUpdates = {
   },
   disableElement(nameOfClass) {
     $(`${nameOfClass}`).prop('disabled', true);
-
   }
 }
 

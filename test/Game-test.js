@@ -63,7 +63,7 @@ describe('it should create a game ', function() {
     game.createPuzzles();
     expect(game.puzzles).to.have.lengthOf(5);
     game.puzzles.forEach(function(puzzle) {
-        expect(puzzle).to.be.an('object').that.has.all.keys('category', 'number_of_words', 'total_number_of_letters', 'first_word', 'description', 'correct_answer');
+      expect(puzzle).to.be.an('object').that.has.all.keys('category', 'number_of_words', 'total_number_of_letters', 'first_word', 'description', 'correct_answer');
     });
   });
 
