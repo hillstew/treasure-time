@@ -5,13 +5,19 @@
 }
 
 body {
+  padding-left: 2%;
+  background-color: #f6f7fa;
   display: grid;
-  grid-template-columns: 210px 1fr;
-  font-family: 'Assistant', sans-serif;
+  grid-template-columns: 170px 1fr;
+  font-family: "Rubik", sans-serif;
+}
+
+main {
+  margin: 0 auto;
 }
 
 .blue-bright {
-  color:#125af5;
+  color: #125af5;
 }
 
 .blue-light {
@@ -31,6 +37,7 @@ body {
 }
 
 .start-screen {
+  /* display: none; */
   background-color: tomato;
   height: 800px;
   position: absolute;
@@ -38,23 +45,60 @@ body {
   z-index: 1;
 }
 
-aside {
-  border-right: 2px solid lightgrey;
+.js-player-card {
+  border: 1px solid #125af5;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 5%;
+  width: 160px;
+}
+
+.js-player-card h2 {
+  color: #125af5;
+}
+
+.round-score {
+  font-size: 0.85rem;
+  font-weight: 400;
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+
+.grand-score {
+  color: #575758;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.js-grand-score-num,
+.js-round-score-num {
+  margin-top: 0;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  color: #575758;
+}
+
+.js-grand-score-num {
+  font-size: 2.3rem;
 }
 
 .flex-title-area {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .puzzle-section {
   display: flex;
-  height: 400px;
-  justify-content: center;
+  height: 300px;
 }
 
 .puzzle-section p {
-  border: 2px solid tomato;
+  border: 1px solid tomato;
   font-size: 27px;
   height: 50px;
   padding-top: 7px;
@@ -63,23 +107,89 @@ aside {
   width: 50px;
 }
 
+.box {
+  transform: rotate(360deg);
+  transform-origin: top left;
+}
+
 .actions-btns {
   display: grid;
-  grid-template-columns: repeat(3, 70px);
-  justify-content: center;
-  justify-content: space-evenly;
+}
+
+.button-section {
+  display: flex;
+}
+
+.js-solve-btn,
+.js-vowel-btn {
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  background-color: #e8eefd;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 15px 100px 0 15px;
+  height: 40px;
+  font-weight: 700;
+  width: 150px;
+  text-transform: uppercase;
+}
+
+.js-spin-btn {
+  background: transparent;
+  border: 5px dotted #125af5;
+  border-radius: 50%;
+  color: #575758;
+  height: 8.5rem;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  width: 8.5rem;
+  cursor: pointer;
+}
+
+.js-solve-btn:hover,
+.js-vowel-btn:hover {
+  background-color: #125af5;
+  color: #f6f7fa;
 }
 
 .letters-section {
   display: grid;
-  grid-template-columns: repeat(13, 60px);
-  justify-content: center;
+  grid-template-columns: repeat(13, 80px);
+  margin: 0 auto;
+  align-items: center;
 }
 
 .letters-section p {
-  border: 1px solid tomato;
-  height: 35px;
-  padding-top: 7px;
+  border: 1px solid #125af5;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #575758;
+  height: 55px;
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin: 20px auto;
+  padding-top: 10px;
   text-align: center;
-  width: 35px;
+  width: 55px;
 }
+
+.letters-section p:hover {
+  background-color: #b9cdfb;
+  font-weight: 700;
+}
+
+.restart-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding-right: 0;
+  text-transform: uppercase;
+}
+
+.fa-redo {
+  color: #575758;
+  padding: 5px;
+}
+

@@ -1,85 +1,118 @@
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" type="text/css" href="normalize.css">
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <link href="https://fonts.googleapis.com/css?family=Assistant:300,400,600,700,800" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-  <title>Name of Game</title>
-</head>
-<body>
-  <section class="start-screen js-start-screen">
-    <h1>Welcome to Name of Game</h1>
-    <label for="playername1">Player Name 1</label>
-    <input class="js-player1" type="text" id="playername1" value="First">
-    <label for="playername2">Player Name 2</label>
-    <input class="js-player2" type="text" id="playername2" value="Second">
-    <label for="playername3">Player Name 3</label>
-    <input class="js-player3" type="text" id="playername3" value="Third">
-    <p>Instructions live here</p>
-    <button class="js-start-btn">Start New Game</button>
-  </section>
-  <aside>
-    <article>Player 1</article>
-    <article>Player 2</article>
-    <article>Player 3</article>
-  </aside>
-  <main>
-    <div class="flex-title-area">
-      <h1>Name of Game</h1>
-      <button>Restart</button>
-    </div>
-    <div class="flex-title-area">
-      <p class="js-category">Category</p>
-      <p>Round</p>
-    </div>
-    <section class="puzzle-section js-puzzle-section">
-      <!-- where puzzle letters live, created in js -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="normalize.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Rubik:400,500,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+    <title>Name of Game</title>
+  </head>
+  <body>
+    <section class="start-screen js-start-screen">
+      <h1>Welcome to Name of Game</h1>
+      <label for="playername1">Player Name 1</label>
+      <input class="js-player1" type="text" id="playername1" value="First" />
+      <label for="playername2">Player Name 2</label>
+      <input class="js-player2" type="text" id="playername2" value="Second" />
+      <label for="playername3">Player Name 3</label>
+      <input class="js-player3" type="text" id="playername3" value="Third" />
+      <p>Instructions live here</p>
+      <button class="js-start-btn">Start New Game</button>
     </section>
-    <div class="actions-btns">
-      <button class="js-solve-btn">Solve</button>
-      <button class="js-spin-btn">Spin</button>
-      <button class="js-vowel-btn">Buy a Vowel</button>
-    </div>
-    <section>
-      <section class="letters-section">
-        <p class="vowel js-letters">A</p>
-        <p class="consonant js-letters">B</p>
-        <p class="consonant js-letters">C</p>
-        <p class="consonant js-letters">D</p>
-        <p class="vowel js-letters">E</p>
-        <p class="consonant js-letters">F</p>
-        <p class="consonant js-letters">G</p>
-        <p class="consonant js-letters">H</p>
-        <p class="vowel js-letters">I</p>
-        <p class="consonant js-letters">J</p>
-        <p class="consonant js-letters">K</p>
-        <p class="consonant js-letters">L</p>
-        <p class="consonant js-letters">M</p>
-        <p class="consonant js-letters">N</p>
-        <p class="vowel js-letters">O</p>
-        <p class="consonant js-letters">P</p>
-        <p class="consonant js-letters">Q</p>
-        <p class="consonant js-letters">R</p>
-        <p class="consonant js-letters">S</p>
-        <p class="consonant js-letters">T</p>
-        <p class="vowel js-letters">U</p>
-        <p class="consonant js-letters">V</p>
-        <p class="consonant js-letters">W</p>
-        <p class="consonant js-letters">X</p>
-        <p class="consonant js-letters">Y</p>
-        <p class="consonant js-letters">Z</p>
+    <aside>
+      <article class="js-player-card">
+        <h2>Player 1</h2>
+        <div>
+          <p class="round-score">Round Score</p>
+          <p class="js-round-score-num">10000</p>
+        </div>
+        <div>
+          <p class="grand-score">Total: 10000</p>
+        </div>
+      </article>
+      <article class="js-player-card">
+        <h2>Player 2</h2>
+        <div>
+          <p class="round-score">Round Score</p>
+          <p class="js-round-score-num">10000</p>
+        </div>
+        <div>
+          <p class="grand-score">Total: 10000</p>
+        </div>
+      </article>
+      <article class="js-player-card">
+        <h2>Player 3</h2>
+        <div>
+          <p class="round-score">Round Score</p>
+          <p class="js-round-score-num">10000</p>
+        </div>
+        <div>
+          <p class="grand-score">Total: 10000</p>
+        </div>
+      </article>
+    </aside>
+    <main>
+      <div class="flex-title-area">
+        <h1>Name of Game</h1>
+        <button class="restart-btn"><i class="fas fa-redo"></i>Restart</button>
+      </div>
+      <div class="flex-title-area">
+        <p class="js-category">Category</p>
+        <p>Round</p>
+      </div>
+      <section class="puzzle-section js-puzzle-section">
+        <!-- where puzzle letters live, created in js -->
       </section>
-      <section class="js-user-instructions">
-      <!-- user instructions -->
+      <section class="button-section">
+        <div class="actions-btns">
+          <button class="js-solve-btn">Solve</button>
+          <button class="js-vowel-btn">Buy a Vowel</button>
+        </div>
+        <!-- <div class="spin-btn-div"> -->
+          <button class="js-spin-btn">Spin</button>
+        <!-- </div> -->
+      </section> 
+      <section>
+        <section class="letters-section">
+          <p class="vowel js-letters">A</p>
+          <p class="consonant js-letters">B</p>
+          <p class="consonant js-letters">C</p>
+          <p class="consonant js-letters">D</p>
+          <p class="vowel js-letters">E</p>
+          <p class="consonant js-letters">F</p>
+          <p class="consonant js-letters">G</p>
+          <p class="consonant js-letters">H</p>
+          <p class="vowel js-letters">I</p>
+          <p class="consonant js-letters">J</p>
+          <p class="consonant js-letters">K</p>
+          <p class="consonant js-letters">L</p>
+          <p class="consonant js-letters">M</p>
+          <p class="consonant js-letters">N</p>
+          <p class="vowel js-letters">O</p>
+          <p class="consonant js-letters">P</p>
+          <p class="consonant js-letters">Q</p>
+          <p class="consonant js-letters">R</p>
+          <p class="consonant js-letters">S</p>
+          <p class="consonant js-letters">T</p>
+          <p class="vowel js-letters">U</p>
+          <p class="consonant js-letters">V</p>
+          <p class="consonant js-letters">W</p>
+          <p class="consonant js-letters">X</p>
+          <p class="consonant js-letters">Y</p>
+          <p class="consonant js-letters">Z</p>
+        </section>
+        <section class="js-user-instructions">
+          <!-- user instructions -->
+        </section>
       </section>
-    </section>
-  </main> 
-</body>
+    </main>
+  </body>
   <script type="text/javascript" src="dataset.js"></script>
   <script type="text/javascript" src="domUpdates.js"></script>
   <script type="text/javascript" src="class/Player.js"></script>
