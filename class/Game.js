@@ -15,9 +15,10 @@ class Game {
     this.createWheel();
     this.createPlayers(namesArray);
     this.createPuzzles();
-    this.currentPuzzle = new Puzzle(this.puzzles.pop())
-    domUpdates.displayPuzzle((Array.from(this.currentPuzzle.answer)), 
-      this.currentPuzzle.category)
+    this.currentPuzzle = new Puzzle(this.puzzles.pop());
+    domUpdates.displayPuzzle((Array.from(this.currentPuzzle.answer)), this.currentPuzzle.category);
+    console.log(this.currentPuzzle.answer);
+    // domUpdates.displayPuzzle(this.currentPuzzle.answer, this.currentPuzzle.category)
   }
 
   createPlayers(namesArray) {

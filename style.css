@@ -102,9 +102,7 @@ aside {
 }
 
 .puzzle-section p {
-  border-bottom: 5px solid #125af5;
-  border-radius: 1px;
-  /*color: #f6f7fa;*/
+  color: #f6f7fa;
   font-size: 2rem;
   font-weight: 500;
   height: 50px;
@@ -112,6 +110,15 @@ aside {
   text-transform: capitalize;
   text-align: center;
   width: 50px;
+}
+
+.puzzle-letters {
+  border-bottom: 5px solid #125af5;
+  border-radius: 1px;
+}
+
+.whitespace {
+  border-bottom: 5px solid transparent;
 }
 
 .box {

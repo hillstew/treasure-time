@@ -13,10 +13,14 @@ const domUpdates = {
   },
 
   displayPuzzle(answer, category) {
-    $('.js-category').text(category)
-    let puzzleSection = $('.js-puzzle-section')
+    $('.js-category').text(category);
+    let puzzleSection = $('.js-puzzle-section');
     answer.forEach((character) => {
-      puzzleSection.append(`<p>${character}</p>`)
+      if (character !== '\u0020') {
+        puzzleSection.append(`<p class="puzzle-letters">${character}</p>`);
+      } else {
+        puzzleSection.append(`<p class="whitespace">${character}</p>`);
+      }
     })
   },
 
