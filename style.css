@@ -187,6 +187,18 @@ aside {
   display: flex;
 }
 
+.js-user-instructions {
+  font-family: font-family: 'Roboto', sans-serif;
+  font-size: 1.3rem;
+  margin-left: 20px;
+  text-align: center;
+  width: 690px
+}
+
+.vowel-reminder {
+  font-size: 1.1rem;
+}
+
 .js-solve-btn,
 .js-vowel-btn {
   background: transparent;

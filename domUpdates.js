@@ -24,8 +24,8 @@ const domUpdates = {
     })
   },
 
-  displaySpunElement(element) {
-    $('.js-user-instructions').text(`You turned towards a treasure trove of ${element}`);
+  displaySpunElement(element, name) {
+    $('.js-user-instructions').empty().append(`<h3>You turned towards a treasure trove of $${element}</h3><p>To claim the treasure, choose a letter below in hopes it matches the phrase.</p>`);
   },
 
   disableElement(nameOfClass, color) {
@@ -61,7 +61,10 @@ const domUpdates = {
   },
 
   displaySpinInstructions(name) {
-    $('.js-user-instructions').text(`${name}, click Spin, Solve Puzzle or Buy a Vowel. Reminder it costs $100 to buy a vowel.`);
+    $('.js-user-instructions').empty().append(`<h2>Choose your adventure ${name}!</h2>
+                                      <p class="user-choices">Click Spin, Solve Puzzle or Buy a Vowel.</p>
+                                      <p class="vowel-reminder">Reminder it costs $100 to buy a vowel.</p>`);
+    
   }
 }
 
