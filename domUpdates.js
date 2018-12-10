@@ -28,9 +28,9 @@ const domUpdates = {
     $('.js-user-instructions').text(`You turned towards a treasure trove of ${element}`);
   },
 
-  disableElement(nameOfClass) {
+  disableElement(nameOfClass, color) {
     $(`${nameOfClass}`).prop('disabled', true);
-    $(`${nameOfClass}`).css('background-color', 'tomato');
+    $(`${nameOfClass}`).css('background-color', `${color}`);
   },
 
   enableElement(nameOfClass) {

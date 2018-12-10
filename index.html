@@ -17,28 +17,27 @@
   <body>
     <section class="start-screen js-start-screen">
       <h1>Welcome to Treasure Time</h1>
+      <p>Enter the names of three players and then click start to begin your treasure hunt.</p>
       <section class="player-input-flex">
-        <label for="playername1">Player Name 1</label>
-        <input class="js-player1" type="text" id="playername1" placeholder="Enter name here" />
+        <label for="playername1"><i class="fas fa-anchor"></i></label>
+        <input class="js-player1" type="text" id="playername1" value="Player 1" />
       </section>
       <section class="player-input-flex">
-        <label for="playername2">Player Name 2</label>
-        <input class="js-player2" type="text" id="playername2" placeholder="Enter name here" />
+        <label for="playername2"><i class="fas fa-pastafarianism"></i></label>
+        <input class="js-player2" type="text" id="playername2" value="Player 2" />
       </section>
       <section class="player-input-flex">
-        <label for="playername3">Player Name 3</label>
-        <input class="js-player3" type="text" id="playername3" placeholder="Enter name here" />  
+        <label for="playername3"><i class="fas fa-fish"></i></label>
+        <input class="js-player3" type="text" id="playername3" value="Player 3" />  
       </section>
       
-      <p>Enter the names of three players above and then click below to begin your treasure hunt!</p>
-      <button class="js-start-btn">Start New Game</button>
+      <button class="js-start-btn"><i class="fas fa-ship"></i>Start</button>
     </section>
     <aside>
       <article class="js-player-card">
         <h2>Player 1</h2>
         <div>
           <p class="round-score">Round Score</p>
-          <i class="fas fa-coins"></i>
           <p class="js-round-score-num">0</p>
         </div>
         <div>

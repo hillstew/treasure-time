@@ -49,9 +49,19 @@ aside {
   text-align: center;
 }
 
+.start-screen h1 {
+  color: #575758;
+  font-size: 3rem;
+  margin: 40px 0;
+}
+
+.start-screen p {
+  color: #575758;
+}
+
 .player-input-flex {
   display: flex;
-  width: 50%;
+  width: 25%;
   margin: auto;
 }
 
@@ -61,14 +71,33 @@ aside {
   height: 35px;
   margin-top: 10px;
   padding-top: 8px;
-  width: 150px;
+  width: 50px;
 }
 
 .player-input-flex input {
+  background-color: #f5f5f5;
   border: transparent;
+  color: #575758;
   flex: 1;
   height: 35px;
+  padding-left: 5px;
   margin-top: 10px;
+}
+
+.js-start-btn {
+  background-color: #f5f5f5;
+  border: transparent;
+  border-radius: 15%;
+  color: #575758;
+  cursor: pointer;
+  height: 40px;
+  margin-top: 20px;
+  width: 100px;
+}
+
+.js-start-btn:hover {
+  background-color: #125af5;
+  color: #e8effd
 }
 
 .js-player-card {
