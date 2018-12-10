@@ -1,5 +1,6 @@
 global.data = require('../dataset.js');
 global.domUpdates = require('../domUpdates.js');
+global.Game = require('../class/Game.js');
 const Puzzle = require('../class/Puzzle.js');
 const chai = require('chai');
 const expect = chai.expect;
@@ -31,7 +32,7 @@ describe('it should create a puzzle', function() {
     expect(domUpdates.displayLetter).to.have.been.called(1);
     expect(puzzle.validateGuess(guess)).to.be.true
     guess = 'Z';
-    // expect(domUpdates.displayLetter).to.have.been.called(1);
+    expect(domUpdates.displayLetter).to.have.been.called(1);
     expect(puzzle.validateGuess(guess)).to.be.false
   });
 })

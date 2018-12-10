@@ -18,6 +18,7 @@ class Game {
     this.currentPuzzle = new Puzzle(this.puzzles.pop());
     domUpdates.displayPuzzle((Array.from(this.currentPuzzle.answer)), this.currentPuzzle.category);
     domUpdates.displayCurrentRound(this.currentRound);
+    domUpdates.displaySpinInstructions(this.players[this.playersTurnIndex].name);
   }
 
   createPlayers(namesArray) {
@@ -63,6 +64,7 @@ class Game {
       this.playersTurnIndex = 0;
     }
     domUpdates.enableElement('.js-spin-btn');
+    domUpdates.displaySpinInstructions(this.players[this.playersTurnIndex].name);
   }
 }
 

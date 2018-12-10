@@ -40,11 +40,35 @@ aside {
 }
 
 .start-screen {
-  background-color: tomato;
+  background-color: #b8cefb;
   height: 800px;
+  justify-content: center;
   position: absolute;
   width: 100%;
   z-index: 1;
+  text-align: center;
+}
+
+.player-input-flex {
+  display: flex;
+  width: 50%;
+  margin: auto;
+}
+
+.player-input-flex label {
+  background-color: #125af5;
+  color: #e8effd;
+  height: 35px;
+  margin-top: 10px;
+  padding-top: 8px;
+  width: 150px;
+}
+
+.player-input-flex input {
+  border: transparent;
+  flex: 1;
+  height: 35px;
+  margin-top: 10px;
 }
 
 .js-player-card {

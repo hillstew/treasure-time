@@ -58,6 +58,10 @@ const domUpdates = {
 
   displayCurrentRound(round) {
     $('.js-round-display').text(`Round ${round}`);
+  },
+
+  displaySpinInstructions(name) {
+    $('.js-user-instructions').text(`${name}, click Spin, Solve Puzzle or Buy a Vowel. Reminder it costs $100 to buy a vowel.`);
   }
 }
 

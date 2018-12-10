@@ -17,13 +17,20 @@
   <body>
     <section class="start-screen js-start-screen">
       <h1>Welcome to Treasure Time</h1>
-      <label for="playername1">Player Name 1</label>
-      <input class="js-player1" type="text" id="playername1" value="First" />
-      <label for="playername2">Player Name 2</label>
-      <input class="js-player2" type="text" id="playername2" value="Second" />
-      <label for="playername3">Player Name 3</label>
-      <input class="js-player3" type="text" id="playername3" value="Third" />
-      <p>Instructions live here</p>
+      <section class="player-input-flex">
+        <label for="playername1">Player Name 1</label>
+        <input class="js-player1" type="text" id="playername1" placeholder="Enter name here" />
+      </section>
+      <section class="player-input-flex">
+        <label for="playername2">Player Name 2</label>
+        <input class="js-player2" type="text" id="playername2" placeholder="Enter name here" />
+      </section>
+      <section class="player-input-flex">
+        <label for="playername3">Player Name 3</label>
+        <input class="js-player3" type="text" id="playername3" placeholder="Enter name here" />  
+      </section>
+      
+      <p>Enter the names of three players above and then click below to begin your treasure hunt!</p>
       <button class="js-start-btn">Start New Game</button>
     </section>
     <aside>
