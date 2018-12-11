@@ -6,7 +6,6 @@ const chai = require('chai');
 const expect = chai.expect;
 const spies = require('chai-spies');
 chai.use(spies);
-chai.spy.on(global.domUpdates, ['displayLetter'], () => true);
 
 describe('it should create a puzzle', function() {
   let puzzle;
@@ -20,6 +19,7 @@ describe('it should create a puzzle', function() {
   }
 
   beforeEach( function() {
+    chai.spy.on(global.domUpdates, ['displayLetter'], () => true);
     puzzle = new Puzzle(puzzleObj);
   });
 

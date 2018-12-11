@@ -8,13 +8,13 @@ const expect = chai.expect;
 const Wheel = require('../class/Wheel.js');
 const spies = require('chai-spies');
 chai.use(spies);
-chai.spy.on(global.domUpdates, ['displaySpunElement', 'disableElement'], () => true);
 
 
 describe('it should create a wheel', function() {
   let wheel;
   beforeEach( function() {
     wheel = new Wheel();
+    chai.spy.on(global.domUpdates, ['displaySpunElement', 'disableElement'], () => true);
   })
 
   afterEach(() => {
@@ -36,7 +36,7 @@ describe('it should create a wheel', function() {
     expect(num).to.be.within(0, maxRange);
   });
 
-  it.skip('should return one element from current wheel elements', function() {
+  it('should return one element from current wheel elements', function() {
     wheel.createWheelElements()
     wheel.spin();
     expect(wheel.currentElement).to.be.oneOf(wheel.elements)
