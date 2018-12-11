@@ -65,7 +65,29 @@ const domUpdates = {
                                       <p class="user-choices">Click Spin, Solve Puzzle or Buy a Vowel.</p>
                                       <p class="vowel-reminder">Reminder it costs $100 to buy a vowel.</p>`);
     
+  },
+
+  displayUserMessage(currentElement) {
+    if (currentElement === 'BANKRUPT') {
+      $('.js-user-popup').text(`Shiver me timbers! Your treasure has been plundered! Your treasure chest is empty and you have lost your turn.`)
+    } else {
+      $('.js-user-popup').text(`The winds weren\'t in your favor. You steered in the wrong direction and lost your turn.`)
+    }
+    $('.js-user-popup').show()
+  },
+
+  hideUserMessage() {
+    $('.js-user-popup').hide();
+  },
+
+  highlightCurrentUserCard(name) {
+    $(`article:contains(${name})`).addClass('current-player-card');
+  },
+
+  unhighlightPrevUserCard(name) {
+    $(`article:contains(${name})`).removeClass('current-player-card');
   }
+
 }
 
 if (typeof module !== 'undefined') {

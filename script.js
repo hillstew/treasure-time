@@ -6,6 +6,7 @@ $('.js-start-btn').on('click', function() {
 
 $('.js-spin-btn').on('click', function() {
   game.currentWheel.spin();
+  game.checkWheelElement();
 });
 
 $('.js-letters').on('click', function(e) {
@@ -13,10 +14,5 @@ $('.js-letters').on('click', function(e) {
   game.intakeGuess(playerSelection);
 });
 
-$("article").hover(
-  function() {
-    $(this).css( "background-color", '#ffffff' );
-  }, function() {
-    $(this).css( "background-color", '#f6f7fa' );
-  });
+
 

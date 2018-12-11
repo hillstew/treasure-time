@@ -19,6 +19,7 @@ class Game {
     domUpdates.displayPuzzle((Array.from(this.currentPuzzle.answer)), this.currentPuzzle.category);
     domUpdates.displayCurrentRound(this.currentRound);
     domUpdates.displaySpinInstructions(this.players[this.playersTurnIndex].name);
+    domUpdates.highlightCurrentUserCard(this.players[this.playersTurnIndex].name);
   }
 
   createPlayers(namesArray) {
@@ -58,15 +59,48 @@ class Game {
   intakeGuess(userGuess) {
     if (this.currentPuzzle.validateGuess(userGuess)) {
       this.players[this.playersTurnIndex].updateScore(this.currentWheel.currentElement);
-    } else if (this.playersTurnIndex < (this.players.length - 1)) {
-      this.playersTurnIndex++;
     } else {
-      this.playersTurnIndex = 0;
+      this.changePlayerTurn();
     }
     domUpdates.enableElement('.js-spin-btn');
     domUpdates.displaySpinInstructions(this.players[this.playersTurnIndex].name);
   }
+
+  changePlayerTurn() {
+    domUpdates.unhighlightPrevUserCard(this.players[this.playersTurnIndex].name);
+    if ((this.playersTurnIndex < (this.players.length - 1))) {
+      this.playersTurnIndex++;
+    } else {
+      this.playersTurnIndex = 0;
+    }
+    domUpdates.highlightCurrentUserCard(this.players[this.playersTurnIndex].name);
+  }
+
+  checkWheelElement() {
+    if (this.currentWheel.currentElement === 'BANKRUPT') {
+      this.players[this.playersTurnIndex].currentScore = 0;
+      domUpdates.displayUpdatedScore(this.players[this.playersTurnIndex].currentScore, this.players[this.playersTurnIndex].name);
+      domUpdates.displayUserMessage('BANKRUPT');
+      setTimeout(function() {
+        domUpdates.hideUserMessage();
+      }, 4000); 
+      this.changePlayerTurn();
+      domUpdates.displaySpinInstructions(this.players[this.playersTurnIndex].name);
+    } else if (this.currentWheel.currentElement === 'LOSE A TURN') {
+      domUpdates.displayUserMessage('LOSE A TURN');
+      setTimeout(function() {
+        domUpdates.hideUserMessage();
+      }, 4000); 
+      this.changePlayerTurn();
+      domUpdates.displaySpinInstructions(this.players[this.playersTurnIndex].name); 
+    } else {
+      domUpdates.displaySpunElement(this.currentWheel.currentElement);
+    }
+  }
+
+
 }
+
 
 
 if (typeof module !== 'undefined') {

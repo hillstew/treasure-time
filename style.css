@@ -84,10 +84,10 @@ aside {
   margin-top: 10px;
 }
 
-.js-start-btn {
+.start-btn {
   background-color: #f5f5f5;
   border: transparent;
-  border-radius: 15%;
+  border-radius: 10px;
   color: #575758;
   cursor: pointer;
   height: 40px;
@@ -95,12 +95,12 @@ aside {
   width: 100px;
 }
 
-.js-start-btn:hover {
+.start-btn:hover {
   background-color: #125af5;
   color: #e8effd
 }
 
-.js-player-card {
+.player-card {
   border: 1px solid #125af5;
   border-radius: 5px;
   cursor: pointer;
@@ -109,8 +109,13 @@ aside {
   width: 160px;
 }
 
-.js-player-card h2 {
+.player-card h2 {
   color: #125af5;
+}
+
+.current-player-card {
+  background-color: #b8cefb;
+  border: 4px solid #125af5;
 }
 
 .round-score {
@@ -128,18 +133,13 @@ aside {
   margin-bottom: 15px;
 }
 
-.js-grand-score-num,
-.js-round-score-num {
+.round-score-num {
   margin-top: 0;
   font-size: 2rem;
   font-weight: 800;
   margin-bottom: 15px;
   text-transform: uppercase;
   color: #575758;
-}
-
-.js-grand-score-num {
-  font-size: 2.3rem;
 }
 
 .flex-title-area {
@@ -187,7 +187,20 @@ aside {
   display: flex;
 }
 
-.js-user-instructions {
+.user-popup {
+  background-color: #125af5;
+  border-radius: 10px;
+  color: #f6f7fa;
+  display: none;
+  font-size: 2rem;
+  height: 170px;
+  margin: 0 330px;
+  padding: 20px;
+  position: absolute;
+  width: 690px;
+}
+
+.user-instructions {
   font-family: font-family: 'Roboto', sans-serif;
   font-size: 1.3rem;
   margin-left: 20px;
@@ -199,8 +212,8 @@ aside {
   font-size: 1.1rem;
 }
 
-.js-solve-btn,
-.js-vowel-btn {
+.solve-btn,
+.vowel-btn {
   background: transparent;
   border: none;
   border-radius: 10px;
@@ -214,7 +227,7 @@ aside {
   text-transform: uppercase;
 }
 
-.js-spin-btn {
+.spin-btn {
   background: transparent;
   border: 6px dashed #125af5;
   border-radius: 50%;
@@ -230,7 +243,7 @@ aside {
   background-color: #125af5;
 }
 
-.js-spin-btn:before {
+.spin-btn:before {
   position: absolute;
   content: '';
   height: calc(100% + 10px); 
@@ -248,8 +261,8 @@ aside {
   }
 }
 
-.js-solve-btn:hover,
-.js-vowel-btn:hover {
+.solve-btn:hover,
+.vowel-btn:hover {
   background-color: #125af5;
   color: #f6f7fa;
 }
