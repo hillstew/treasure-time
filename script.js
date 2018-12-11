@@ -11,7 +11,12 @@ $('.js-spin-btn').on('click', function() {
 
 $('.js-letters').on('click', function(e) {
   let playerSelection = $(this).text();
-  game.intakeGuess(playerSelection);
+  if ($(e.target).hasClass('disabled-letters')) {
+    alert('That letter has already been chosen. Please pick another letter');
+  } else {
+    $(e.target).addClass('disabled-letters');
+    game.intakeGuess(playerSelection);
+  }
 });
 
 

@@ -274,7 +274,7 @@ aside {
   align-items: center;
 }
 
-.letters-section p {
+.consonant, .vowel {
   border: 1px solid #b9cdfb;
   border-radius: 50%;
   cursor: pointer;
@@ -288,9 +288,18 @@ aside {
   width: 55px;
 }
 
-.letters-section p:hover {
+.consonant:hover, .vowel:hover {
   background-color: #b9cdfb;
   font-weight: 700;
+}
+
+.disabled-letters {
+  background-color: #b1b2b4;
+}
+
+.disabled-letters:hover {
+  cursor: not-allowed;
+  background-color: #b1b2b4;
 }
 
 .restart-btn {
