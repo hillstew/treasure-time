@@ -57,9 +57,14 @@ class Game {
   }
 
   intakeGuess(userGuess) {
+    domUpdates.removeClass('.js-spin-btn', 'vowel-time');
     if (this.currentPuzzle.validateGuess(userGuess)) {
       this.players[this.playersTurnIndex].updateScore(this.currentWheel.currentElement);
     } else {
+      
+      if (this.currentPuzzle.isLetterAVowel(userGuess)) {
+        this.players[this.playersTurnIndex].updateScore(this.currentWheel.currentElement);
+      }
       domUpdates.displayNotInPuzzle();
       setTimeout(function() {
         domUpdates.hideUserMessage();
@@ -67,6 +72,8 @@ class Game {
       this.changePlayerTurn();
     }
     domUpdates.enableElement('.js-spin-btn');
+    domUpdates.removeClass('.vowel', 'highlighted-vowel')
+    domUpdates.removeClass('.consonant', 'temp-disable');
     domUpdates.displaySpinInstructions(this.players[this.playersTurnIndex].name);
   }
 
@@ -86,18 +93,14 @@ class Game {
       domUpdates.displayUpdatedScore(this.players[this.playersTurnIndex].currentScore, this.players[this.playersTurnIndex].name);
       domUpdates.displayUserMessage('BANKRUPT');
       
-      setTimeout(function() {
-        domUpdates.hideUserMessage();
-      }, 4000); 
+      setTimeout(function() {domUpdates.hideUserMessage()}, 3000); 
       
       this.changePlayerTurn();
       domUpdates.displaySpinInstructions(this.players[this.playersTurnIndex].name);
       domUpdates.enableElement('.js-spin-btn');
     } else if (this.currentWheel.currentElement === 'LOSE A TURN') {
       domUpdates.displayUserMessage('LOSE A TURN');
-      setTimeout(function() {
-        domUpdates.hideUserMessage();
-      }, 4000); 
+      setTimeout(function() {domUpdates.hideUserMessage()}, 3000); 
       this.changePlayerTurn();
       domUpdates.displaySpinInstructions(this.players[this.playersTurnIndex].name); 
       domUpdates.enableElement('.js-spin-btn');
@@ -105,6 +108,26 @@ class Game {
       domUpdates.displaySpunElement(this.currentWheel.currentElement);
     }
   }
+
+  canPlayerBuyVowel() {
+    if (this.players[this.playersTurnIndex].currentScore >= 100) {
+      this.letPlayerBuyVowel();
+    } else {
+      domUpdates.displayVowelError();
+      setTimeout(function() {
+        domUpdates.hideUserMessage()
+        domUpdates.removeTempClass();
+      }, 2000); 
+      domUpdates.enableElement('.js-spin-btn');
+
+    }
+  }
+
+  letPlayerBuyVowel() {
+    domUpdates.highlightVowels();
+    domUpdates.displayVowelInstructions();
+    this.currentWheel.currentElement = -100;
+  } 
 
 
 }

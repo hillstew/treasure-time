@@ -90,8 +90,25 @@ const domUpdates = {
 
   displayNotInPuzzle() {
     $('.js-user-popup').text(`Arrgggghhh! Your letter is not in the puzzle. Yer turn is over.`).show(); 
-  }
+  },
 
+  displayVowelError() {
+    $('.js-user-popup').text(`You do not have enough treasure to buy a vowel`).show(); 
+  },
+
+  highlightVowels() {
+    //grab the vowels and make they shineeee!
+    $('.js-available').removeClass('disabled-vowels').addClass('highlighted-vowel');
+
+  },
+
+  displayVowelInstructions() {
+    $('.js-user-instructions').empty().append(`<p class="user-choices">Choose a highlighted vowel below</p>`);
+  },
+
+  removeClass(classToFindElementWith, classNameToRemove) {
+    $(`${classToFindElementWith}`).removeClass(`${classNameToRemove}`);
+  }
 }
 
 if (typeof module !== 'undefined') {

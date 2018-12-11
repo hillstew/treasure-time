@@ -274,7 +274,7 @@ aside {
   align-items: center;
 }
 
-.consonant, .vowel {
+.consonant{
   border: 1px solid #b9cdfb;
   border-radius: 50%;
   cursor: pointer;
@@ -288,9 +288,24 @@ aside {
   width: 55px;
 }
 
-.consonant:hover, .vowel:hover {
+.consonant:hover {
   background-color: #b9cdfb;
   font-weight: 700;
+}
+
+.vowel {
+  background-color: #b8cefb;
+  border: 1px solid #575758;
+  border-radius: 50%;
+  color: #575758;
+  cursor: pointer;
+  height: 55px;
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin: 20px auto;
+  padding-top: 15px;
+  text-align: center;
+  width: 55px;
 }
 
 .disabled-letters {
@@ -300,6 +315,26 @@ aside {
 .disabled-letters:hover {
   cursor: not-allowed;
   background-color: #b1b2b4;
+}
+
+.temp-disable {
+  background-color: #b1b2b4;
+  color: #b1b2b4;
+}
+
+.temp-disable:hover {
+  cursor: not-allowed;
+  background-color: #b1b2b4;
+}
+
+
+.disabled-vowels {
+  cursor: not-allowed;
+}
+
+.highlighted-vowel {
+  background-color: #125af5;
+  color: white;
 }
 
 .restart-btn {
