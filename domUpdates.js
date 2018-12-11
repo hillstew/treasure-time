@@ -86,6 +86,11 @@ const domUpdates = {
 
   unhighlightPrevUserCard(name) {
     $(`article:contains(${name})`).removeClass('current-player-card');
+  },
+
+  displayNotInPuzzle() {
+    console.log('got to the new domupdate');
+    $('.js-user-popup').text(`Arrgggghhh! Your letter is not in the puzzle. Yer turn is over.`).show(); 
   }
 
 }

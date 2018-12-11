@@ -60,6 +60,10 @@ class Game {
     if (this.currentPuzzle.validateGuess(userGuess)) {
       this.players[this.playersTurnIndex].updateScore(this.currentWheel.currentElement);
     } else {
+      domUpdates.displayNotInPuzzle();
+      setTimeout(function() {
+        domUpdates.hideUserMessage();
+      }, 5000); 
       this.changePlayerTurn();
     }
     domUpdates.enableElement('.js-spin-btn');
@@ -81,11 +85,14 @@ class Game {
       this.players[this.playersTurnIndex].currentScore = 0;
       domUpdates.displayUpdatedScore(this.players[this.playersTurnIndex].currentScore, this.players[this.playersTurnIndex].name);
       domUpdates.displayUserMessage('BANKRUPT');
+      
       setTimeout(function() {
         domUpdates.hideUserMessage();
       }, 4000); 
+      
       this.changePlayerTurn();
       domUpdates.displaySpinInstructions(this.players[this.playersTurnIndex].name);
+      domUpdates.enableElement('.js-spin-btn');
     } else if (this.currentWheel.currentElement === 'LOSE A TURN') {
       domUpdates.displayUserMessage('LOSE A TURN');
       setTimeout(function() {
@@ -93,6 +100,7 @@ class Game {
       }, 4000); 
       this.changePlayerTurn();
       domUpdates.displaySpinInstructions(this.players[this.playersTurnIndex].name); 
+      domUpdates.enableElement('.js-spin-btn');
     } else {
       domUpdates.displaySpunElement(this.currentWheel.currentElement);
     }
