@@ -18,7 +18,7 @@ class Puzzle {
 
   isLetterAVowel(selectedLetter) {
     let vowels = ['A', 'E', 'I', 'O', 'U'];
-    if(vowels.includes(selectedLetter)) {
+    if (vowels.includes(selectedLetter)) {
       return true;
     }
   }

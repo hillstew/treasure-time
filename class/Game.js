@@ -16,7 +16,7 @@ class Game {
     this.createPlayers(namesArray);
     this.createPuzzles();
     this.currentPuzzle = new Puzzle(this.puzzles.pop());
-    domUpdates.displayPuzzle((Array.from(this.currentPuzzle.answer)), this.currentPuzzle.category);
+    domUpdates.displayPuzzle(this.currentPuzzle.answer, this.currentPuzzle.category);
     domUpdates.displayCurrentRound(this.currentRound);
     domUpdates.displaySpinInstructions(this.players[this.playersTurnIndex].name);
     domUpdates.highlightCurrentUserCard(this.players[this.playersTurnIndex].name);
@@ -93,14 +93,18 @@ class Game {
       domUpdates.displayUpdatedScore(this.players[this.playersTurnIndex].currentScore, this.players[this.playersTurnIndex].name);
       domUpdates.displayUserMessage('BANKRUPT');
       
-      setTimeout(function() {domUpdates.hideUserMessage()}, 3000); 
+      setTimeout(function() {
+        domUpdates.hideUserMessage()
+      }, 3000); 
       
       this.changePlayerTurn();
       domUpdates.displaySpinInstructions(this.players[this.playersTurnIndex].name);
       domUpdates.enableElement('.js-spin-btn');
     } else if (this.currentWheel.currentElement === 'LOSE A TURN') {
       domUpdates.displayUserMessage('LOSE A TURN');
-      setTimeout(function() {domUpdates.hideUserMessage()}, 3000); 
+      setTimeout(function() {
+        domUpdates.hideUserMessage()
+      }, 3000); 
       this.changePlayerTurn();
       domUpdates.displaySpinInstructions(this.players[this.playersTurnIndex].name); 
       domUpdates.enableElement('.js-spin-btn');
@@ -116,7 +120,7 @@ class Game {
       domUpdates.displayVowelError();
       setTimeout(function() {
         domUpdates.hideUserMessage()
-        domUpdates.removeClass('.js-letter', 'temp-disable');
+        domUpdates.removeClass('.js-letters', 'temp-disable');
       }, 2000); 
       domUpdates.enableElement('.js-spin-btn');
 
