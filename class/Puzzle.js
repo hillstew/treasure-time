@@ -33,15 +33,6 @@ class Puzzle {
   }
 }
 
-
-class BonusPuzzle extends Puzzle {
-  constructor() {
-    super();
-    this.bonusPuzzle = bonusPuzzle;
-  }
-}
-
-
 if (typeof module !== 'undefined') {
   module.exports = Puzzle;
 }
