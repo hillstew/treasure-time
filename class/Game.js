@@ -129,6 +129,35 @@ class Game {
     this.currentWheel.currentElement = -100;
   } 
 
+  intakePhrase(guess) {
+    
+    if (this.currentPuzzle.checkAnswer(guess)) {
+      let winner = this.players[this.playersTurnIndex];
+      winner.grandScore = winner.currentScore;
+      domUpdates.displayGrandScore(winner.grandScore, winner.name);
+      this.players.forEach((player) => {
+        player.currentScore = 0;
+      })
+      this.createNewRound();
+    } else {
+      this.changePlayerTurn()
+    }
+  }
+
+  createNewRound() {
+    this.currentRound++
+    this.createWheel();
+    this.currentPuzzle = new Puzzle(this.puzzles.pop());
+    this.players.forEach((player) => {
+      domUpdates.displayUpdatedScore(player.currentScore, player.name);
+
+    })
+    domUpdates.displayPuzzle((Array.from(this.currentPuzzle.answer)), this.currentPuzzle.category);
+    domUpdates.displayCurrentRound(this.currentRound);
+    domUpdates.displaySpinInstructions(this.players[this.playersTurnIndex].name);
+    domUpdates.highlightCurrentUserCard(this.players[this.playersTurnIndex].name);
+  }
+
 
 }
 

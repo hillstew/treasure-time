@@ -22,6 +22,15 @@ class Puzzle {
       return true;
     }
   }
+
+  checkAnswer(userGuess) {
+    userGuess = userGuess.toUpperCase()
+    if (userGuess === this.answer) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
 

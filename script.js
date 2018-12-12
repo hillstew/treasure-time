@@ -49,5 +49,17 @@ $('.js-vowel-btn').on('click', function(e) {
   game.canPlayerBuyVowel();
 })
 
+$('.js-solve-btn').on('click', function(e) {
+  domUpdates.displaySolvePopup();
+})
+
+$('.js-user-instructions').on('click', function(e) {
+  let guess = $('.js-answer-input').val()
+  
+  if ($(e.target).hasClass('js-submit-btn')) {
+    game.intakePhrase(guess);
+  }
+})
+
 
 

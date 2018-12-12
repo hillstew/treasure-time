@@ -15,6 +15,7 @@ const domUpdates = {
   displayPuzzle(answer, category) {
     $('.js-category').text(category);
     let puzzleSection = $('.js-puzzle-section');
+    puzzleSection.empty();
     answer.forEach((character) => {
       if (character !== '\u0020') {
         puzzleSection.append(`<p class="puzzle-letters">${character}</p>`);
@@ -41,6 +42,10 @@ const domUpdates = {
   displayUpdatedScore(score, playerName) {
     let targetCard = $(`article:contains(${playerName})`);
     targetCard.find('.js-round-score-num').text(score);
+  },
+  displayGrandScore(grandScore, winnerName) {
+    let targetCard = $(`article:contains(${winnerName})`);
+    targetCard.find('.js-grand-score').text(`Total: ${grandScore}`);
   },
 
   displayPlayerNames(names) {
@@ -108,6 +113,10 @@ const domUpdates = {
 
   removeClass(classToFindElementWith, classNameToRemove) {
     $(`${classToFindElementWith}`).removeClass(`${classNameToRemove}`);
+  }, 
+
+  displaySolvePopup() {
+    $('.js-user-instructions').empty().append(`<p>Enter your guess below</p><input class="js-answer-input" type="text"></input><button class="js-submit-btn">Submit</button>`);
   }
 }
 
