@@ -15,14 +15,57 @@ const domUpdates = {
   displayPuzzle(answer, category) {
     $('.js-category').text(category);
     let puzzleSection = $('.js-puzzle-section');
-    puzzleSection.empty();
-    answer.forEach((character) => {
-      if (character !== '\u0020') {
-        puzzleSection.append(`<p class="puzzle-letters">${character}</p>`);
-      } else {
-        puzzleSection.append(`<p class="whitespace">${character}</p>`);
-      }
-    })
+    let splitAnswer = answer.split(' ');
+    let firstRow = [];
+    let secondRow = [];
+    if (splitAnswer.length >= 2 && answer.length > 16) {
+      let numToSplice = Math.ceil((splitAnswer.length / 2))
+      let firstRowElements = splitAnswer.splice(0, numToSplice);
+      firstRow.push(...firstRowElements)
+      secondRow = splitAnswer.concat();
+      puzzleSection.append(`<div class="first-row-div"></div>`)
+      puzzleSection.append(`<div class="second-row-div"></div>`)
+      puzzleSection.css({'display': 'grid', 'grid-template-rows': '65px 65px'})
+      let counter = 0;
+      firstRow.forEach((word) => {
+        counter++
+        $('.first-row-div').append(`<span class="first-row-${counter}"></span>`);
+        let chars = word.split('');
+        chars.forEach((char) => {
+          if (char === '\u0027' || char === '\u0026' || char === '\u002d') {
+            $(`.first-row-${counter}`).append(`<p class="special-char">${char}</p>`);
+          } else {
+            $(`.first-row-${counter}`).append(`<p class="puzzle-letters">${char}</p>`);
+          }
+        })
+      })
+      counter = 0;
+      secondRow.forEach((word) => {
+        counter++
+        $('.second-row-div').append(`<span class="second-row-${counter}"></span>`);
+        let chars = word.split('');
+        chars.forEach((char) => {
+          if (char === '\u0027' || char === '\u0026' || char === '\u002d') {
+            $(`.second-row-${counter}`).append(`<p class="special-char">${char}</p>`);
+          } else {
+            $(`.second-row-${counter}`).append(`<p class="puzzle-letters">${char}</p>`);
+          }
+        })
+      })
+    } else {
+      answer = [...answer]
+      answer.forEach((char) => {
+        let whiteSpace = '\u0020'
+        let specialChars = ['\u0027', '\u0026', '\u002d'];
+        if (char !== whiteSpace && !specialChars.includes(char)) {
+          puzzleSection.append(`<p class="puzzle-letters">${char}</p>`);
+        } else if (specialChars.includes(char)) {
+          puzzleSection.append(`<p class="special-char">${char}</p>`)
+        } else {
+          puzzleSection.append(`<p class="whitespace">${char}</p>`);
+        }
+      })
+    }
   },
 
   displaySpunElement(element, name) {
