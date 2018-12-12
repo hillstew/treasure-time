@@ -116,7 +116,7 @@ class Game {
       domUpdates.displayVowelError();
       setTimeout(function() {
         domUpdates.hideUserMessage()
-        domUpdates.removeTempClass();
+        domUpdates.removeClass('.js-letter', 'temp-disable');
       }, 2000); 
       domUpdates.enableElement('.js-spin-btn');
 
@@ -135,12 +135,18 @@ class Game {
       let winner = this.players[this.playersTurnIndex];
       winner.grandScore = winner.currentScore;
       domUpdates.displayGrandScore(winner.grandScore, winner.name);
-      this.players.forEach((player) => {
-        player.currentScore = 0;
-      })
-      this.createNewRound();
+      domUpdates.displayRoundWinner(winner.name, this.currentRound);
+      setTimeout(() => {
+        domUpdates.hideUserMessage()
+        this.players.forEach((player) => {
+          player.currentScore = 0;
+        })
+        this.createNewRound();
+        domUpdates.resetLetters();
+      }, 3000); 
     } else {
-      this.changePlayerTurn()
+      this.changePlayerTurn();
+      domUpdates.displaySpinInstructions(this.players[this.playersTurnIndex].name);
     }
   }
 

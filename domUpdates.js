@@ -117,6 +117,14 @@ const domUpdates = {
 
   displaySolvePopup() {
     $('.js-user-instructions').empty().append(`<p>Enter your guess below</p><input class="js-answer-input" type="text"></input><button class="js-submit-btn">Submit</button>`);
+  },
+
+  displayRoundWinner(winner, currentRound) {
+    $('.js-user-popup').text(`Arrrrrr ${winner}, you solved the puzzle for Round ${currentRound} and get to keep your treasure!`).show()
+  },
+
+  resetLetters() {
+    $('.js-letters').removeClass('disabled-letters');
   }
 }
 
