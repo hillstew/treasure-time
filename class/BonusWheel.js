@@ -1,7 +1,7 @@
 class BonusWheel extends Wheel {
   constructor() {
     super();
-    this.bonusElements = null;
+    this.bonusElement = null;
   }
 
   awardBonusElement() {
