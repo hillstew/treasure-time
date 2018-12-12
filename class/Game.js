@@ -6,6 +6,7 @@ class Game {
     this.puzzles = [];
     this.currentPuzzle = null;
     this.currentWheel = null;
+    this.grandWinner = null;
   }
 
   start() {
@@ -134,7 +135,6 @@ class Game {
   } 
 
   intakePhrase(guess) {
-    
     if (this.currentPuzzle.checkAnswer(guess)) {
       let winner = this.players[this.playersTurnIndex];
       winner.grandScore = winner.currentScore;
@@ -155,19 +155,31 @@ class Game {
   }
 
   createNewRound() {
-    this.currentRound++
-    this.createWheel();
-    this.currentPuzzle = new Puzzle(this.puzzles.pop());
-    this.players.forEach((player) => {
-      domUpdates.displayUpdatedScore(player.currentScore, player.name);
-
-    })
-    domUpdates.displayPuzzle((Array.from(this.currentPuzzle.answer)), this.currentPuzzle.category);
-    domUpdates.displayCurrentRound(this.currentRound);
-    domUpdates.displaySpinInstructions(this.players[this.playersTurnIndex].name);
-    domUpdates.highlightCurrentUserCard(this.players[this.playersTurnIndex].name);
+    if (this.currentRound === 4) {
+      this.declareWinner();
+    } else {
+      this.currentRound++
+      this.createWheel();
+      this.currentPuzzle = new Puzzle(this.puzzles.pop());
+      this.players.forEach((player) => {
+        domUpdates.displayUpdatedScore(player.currentScore, player.name);
+      });
+      domUpdates.displayPuzzle((Array.from(this.currentPuzzle.answer)), this.currentPuzzle.category);
+      domUpdates.displayCurrentRound(this.currentRound);
+      domUpdates.displaySpinInstructions(this.players[this.playersTurnIndex].name);
+      domUpdates.highlightCurrentUserCard(this.players[this.playersTurnIndex].name);
+    }
   }
 
+  declareWinner() {
+    let highest = 0;
+    this.grandWinner = this.players.reduce((obj, player) => {
+      if (player.grandScore > highest) {
+        highest = player.grandScore;
+        obj.winner = player;
+      }
+    }, {});
+  }
 
 }
 

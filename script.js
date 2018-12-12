@@ -9,57 +9,58 @@ $('.js-spin-btn').on('click', function() {
   game.checkWheelElement();
 });
 
-$('.js-letters').on('click', function(e) {
-  // if spin button is active and the target is a letter
+$('.js-letters').on('click', function(event) {
+
   if (!$('.js-spin-btn').is(':disabled')) {
     alert('Please click on Spin, Solve Puzzle or Buy a Vowel before selecting a letter');
     return;
   };
-  // if letter they clicked on has class disabled letters, you already chose that one!!!
-  if ($(e.target).hasClass('disabled-letters')) {
+
+  if ($(event.target).hasClass('disabled-letters')) {
     alert('That letter has already been chosen. Please pick another letter');
     return;
   } 
-  // if the letter they clicked has class temp-disable, you must choose vowel not consonant!!!
-  if($(e.target).hasClass('temp-disable')) {
+
+  if($(event.target).hasClass('temp-disable')) {
     alert('You did not select a vowel. Chooses from the highlighted vowels below.');
     return;
   }
 
-  //if the spin button is disabled and the target is a vowel
-  //alert you cannot choose a vowel, you must choose a consonant
-  if($('.js-spin-btn').is(':disabled') && $(e.target).hasClass('vowel') && !$('.js-spin-btn').hasClass('vowel-time')) {
+  if($('.js-spin-btn').is(':disabled') && $(event.target).hasClass('vowel') && !$('.js-spin-btn').hasClass('vowel-time')) {
     alert('You cannot pick a vowel. Please choose a consonant.');
     return;
   }
 
-
   let playerSelection = $(this).text();
 
-    $(e.target).removeClass('highlighted-vowel');
-    $(e.target).addClass('disabled-letters');
-    game.intakeGuess(playerSelection);
-  
+  $(event.target).removeClass('highlighted-vowel');
+  $(event.target).addClass('disabled-letters');
+  game.intakeGuess(playerSelection);  
 });
 
-$('.js-vowel-btn').on('click', function(e) {
-  domUpdates.disableElement('.js-spin-btn', 'yellow')
+$('.js-vowel-btn').on('click', function() {
+  domUpdates.disableElement('.js-spin-btn', '#b1b2b4')
   $('.js-spin-btn').addClass('vowel-time');
   $('.consonant').addClass('temp-disable');
   game.canPlayerBuyVowel();
 })
 
-$('.js-solve-btn').on('click', function(e) {
+$('.js-solve-btn').on('click', function() {
   domUpdates.displaySolvePopup();
 })
 
-$('.js-user-instructions').on('click', function(e) {
+$('.js-user-instructions').on('click', function(event) {
   let guess = $('.js-answer-input').val()
   
-  if ($(e.target).hasClass('js-submit-btn')) {
+  if ($(event.target).hasClass('js-submit-btn')) {
     game.intakePhrase(guess);
   }
 })
+
+$('.js-restart-btn').on('click', () => {
+  console.log('hi')
+  location.reload();
+});
 
 
 

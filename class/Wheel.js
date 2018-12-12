@@ -22,7 +22,7 @@ class Wheel {
     this.currentElement = this.elements[index];
 
     domUpdates.displaySpunElement(this.currentElement);
-    domUpdates.disableElement('.js-spin-btn', 'tomato');
+    domUpdates.disableElement('.js-spin-btn', '#b1b2b4');
 
   }
 }
