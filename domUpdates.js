@@ -19,9 +19,9 @@ const domUpdates = {
     let firstRow = [];
     let secondRow = [];
     if (splitAnswer.length >= 2 && answer.length > 16) {
-      let firstHalf = Math.ceil((splitAnswer.length / 2))
-      let test = splitAnswer.splice(0, firstHalf);
-      firstRow.push(...test)
+      let numToSplice = Math.ceil((splitAnswer.length / 2))
+      let firstRowElements = splitAnswer.splice(0, numToSplice);
+      firstRow.push(...firstRowElements)
       secondRow = splitAnswer.concat();
       puzzleSection.append(`<div class="first-row-div"></div>`)
       puzzleSection.append(`<div class="second-row-div"></div>`)
@@ -54,7 +54,6 @@ const domUpdates = {
       })
     } else {
       answer = [...answer]
-      console.log(answer);
       answer.forEach((char) => {
         let whiteSpace = '\u0020'
         let specialChars = ['\u0027', '\u0026', '\u002d'];
