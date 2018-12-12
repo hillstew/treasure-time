@@ -2,7 +2,9 @@ global.data = require('../dataset.js');
 global.domUpdates = require('../domUpdates.js');
 global.Player = require('../class/Player.js');
 global.Puzzle = require('../class/Puzzle.js');
+global.BonusPuzzle = require('../class/BonusPuzzle.js');
 global.Wheel = require('../class/Wheel.js');
+global.BonusWheel = require('../class/BonusWheel.js');
 const chai = require('chai');
 const expect = chai.expect;
 const Game = require('../class/Game.js');
@@ -15,14 +17,35 @@ describe('it should create a game ', function() {
   beforeEach( function() {
     game = new Game();
     chai.spy.on(global.domUpdates, ['getPlayerNames'], () => ['first', 'second', 'third']);
-    chai.spy.on(global.domUpdates, ['hideStartScreen', 'displayPuzzle', 'displayPlayerNames', 'displayCurrentRound', 'displaySpinInstructions'], () => true);
+    chai.spy.on(global.domUpdates, [
+      'displayCurrentRound', 
+      'displayGrandScore', 
+      'displayRoundWinner', 
+      'displayNotInPuzzle', 
+      'displayPlayerNames', 
+      'displayPuzzle', 
+      'displaySpinInstructions', 
+      'displaySpunElement', 
+      'displayUpdatedScore', 
+      'displayUserMessage', 
+      'displayVowelError', 
+      'displayVowelInstructions', 
+      'enableElement', 
+      'hideUserMessage', 
+      'highlightCurrentUserCard', 
+      'highlightVowels', 
+      'hideStartScreen', 
+      'removeClass', 
+      'resetLetters', 
+      'unhighlightPrevUserCard'
+      ], () => true);
   });
 
   afterEach(() => {
     chai.spy.restore(global.domUpdates);
   })
 
-  it.skip('it should start a game', function() {
+  it('it should start a game', function() {
     game.start();
     expect(domUpdates.getPlayerNames).to.have.been.called(1);
     expect(domUpdates.hideStartScreen).to.have.been.called(1);
@@ -34,6 +57,7 @@ describe('it should create a game ', function() {
     expect(domUpdates.displayPuzzle).to.have.been.called(1);
     expect(domUpdates.displayCurrentRound).to.have.been.called(1);
     expect(domUpdates.displaySpinInstructions).to.have.been.called(1);
+    expect(domUpdates.highlightCurrentUserCard).to.have.been.called(1);
   });
   
   it('it should instanciate three players from Player class', function() {
@@ -74,5 +98,34 @@ describe('it should create a game ', function() {
     game.createWheel();
     expect(game.currentWheel).to.be.instanceOf(Wheel);
     expect(game.currentWheel).to.have.property('elements').with.lengthOf(6);
+  });
+
+  it.skip('should intake a users guess', function() {
+    let userGuess = 'C';
+    game.intakeGuess(userGuess);
+  });
+
+  it.skip('should be able to change the player turn index', function() {
+    game.changePlayerTurn();
+  });
+
+  it.skip('should check wheel element to see if bankrupt or lose-a-turn', function() {
+    game.checkWheelElements();
+  });
+
+  it.skip('should check if a player can buy a vowel', function() {
+    game.canPlayerBuyVowel();
+  });
+
+  it.skip('should let player buy a vowel', function() {
+    game.letPlayerBuyVowel();
+  });
+
+  it.skip('should intake a users guessed phrase', function() {
+    game.intakePhrase();
+  });
+
+  it.skip('should be able to create a new round', function() {
+    game.createNewRound();
   });
 })

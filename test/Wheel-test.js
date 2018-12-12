@@ -1,7 +1,5 @@
 global.data = require('../dataset.js');
 global.domUpdates = require('../domUpdates.js');
-global.Player = require('../class/Player.js');
-global.Puzzle = require('../class/Puzzle.js');
 global.Game = require('../class/Game.js');
 const chai = require('chai');
 const expect = chai.expect;
@@ -27,7 +25,7 @@ describe('it should create a wheel', function() {
     wheel.elements.forEach(function(element) {
       expect(element).to.not.be.null; 
       expect(element).to.not.be.undefined;
-    })
+    });
   });
 
   it('should be able to generate a number given a max range', function() {

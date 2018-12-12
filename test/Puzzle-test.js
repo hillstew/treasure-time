@@ -27,12 +27,26 @@ describe('it should create a puzzle', function() {
     chai.spy.restore(global.domUpdates);
   })
 
-  it.skip('should be able validate the players guess', function() {
+  it('should be able validate the players guess as correct', function() {
     let guess = 'B';
+    puzzle.validateGuess(guess);
     expect(domUpdates.displayLetter).to.have.been.called(1);
     expect(puzzle.validateGuess(guess)).to.be.true
-    guess = 'Z';
-    expect(domUpdates.displayLetter).to.have.been.called(1);
-    expect(puzzle.validateGuess(guess)).to.be.false
+  });
+
+  it('should be able to validate the players guess as incorrect', function() {
+    let guess = 'Z';
+    puzzle.validateGuess(guess);
+    expect(puzzle.validateGuess(guess)).to.be.false  
+  });
+
+  it.skip('should check if a letter is a vowel', function() {
+    let selectedLetter = 'E';
+    puzzle.isLetterAVowel(selectedLetter);
+  });
+
+  it.skip('should check user guess and return whether it matches answer', function(){
+    let userGuess = 'Charger';
+    puzzle.checkAnswer(userGUess);
   });
 })
