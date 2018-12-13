@@ -14,7 +14,7 @@ const domUpdates = {
 
   displayPuzzle(answer, category) {
     $('.js-category').text(category);
-    let puzzleSection = $('.js-puzzle-section');
+    let puzzleSection = $('.js-puzzle-section').empty();
     let splitAnswer = answer.split(' ');
     let firstRow = [];
     let secondRow = [];
@@ -145,7 +145,6 @@ const domUpdates = {
   },
 
   highlightVowels() {
-    //grab the vowels and make they shineeee!
     $('.js-available').removeClass('disabled-vowels').addClass('highlighted-vowel');
 
   },
@@ -159,7 +158,7 @@ const domUpdates = {
   }, 
 
   displaySolvePopup() {
-    $('.js-user-instructions').empty().append(`<p>Enter your guess below</p><input class="js-answer-input" type="text"></input><button class="js-submit-btn">Submit</button>`);
+    $('.js-user-instructions').empty().append(`<p>Enter your guess below</p><div class="flex-answer"><input class="answer-input js-answer-input" type="text"></input><button class="answer-submit-btn js-submit-btn">Submit</button></div>`);
   },
 
   displayRoundWinner(winner, currentRound) {
@@ -168,6 +167,29 @@ const domUpdates = {
 
   resetLetters() {
     $('.js-letters').removeClass('disabled-letters');
+  },
+
+  emptyPuzzleSection() {
+    $('.js-puzzle-section').empty();
+  },
+
+  displayWinner(winnerName) {
+    $('.js-puzzle-section').css('flex-direction', 'column');
+    $('.js-user-instructions').empty()
+    $('.js-puzzle-section').append(`<h2>Congratulations ${winnerName} you have the most treasure!</h2><p>Click below to start your bonus adventure for one last chance to get more treasure!</p><button class="bonus-round-btn js-bonus-round-btn">Start Bonus Treasure Round</button>`)
+    $('.user-section').hide();
+    $('.letters-section').hide();
+  },
+
+  setupBonusRoundDisplay(answer, category) {
+    $('.user-section').show();
+    $('.letters-section').show();
+    $('.js-round-display').text(`Bonus Treasure Round`);
+    $('.js-puzzle-section').css('display', 'flex');
+    $('.js-puzzle-section').css('flex-direction', 'row');
+    this.displayPuzzle(answer, category);
+    //generate random indexes
+    //reveal those letters only if they are not included in [a, e, i ,o ,u]
   }
 }
 

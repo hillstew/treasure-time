@@ -1,6 +1,6 @@
 class Game {
   constructor() {
-    this.currentRound = 1;
+    this.currentRound = 4;
     this.players = [];
     this.playersTurnIndex = 0;
     this.puzzles = [];
@@ -39,6 +39,17 @@ class Game {
     return puzzleBank;
   }
 
+  createBonusPuzzle() {
+    const puzzleBank = data.puzzles.one_word_answers.puzzle_bank.concat();
+    const puzzleBankToUse = puzzleBank.filter(puzzle => {
+      return puzzle.correct_answer.length > 6;
+    });
+    const randomIndex = this.createRandomNumber(puzzleBankToUse.length);
+    let bonusPuzzle = new Puzzle(puzzleBankToUse[randomIndex]);
+    this.currentPuzzle = bonusPuzzle;
+    console.log('we reassigned the current puzzle: ', this.currentPuzzle);
+  }
+
   createRandomNumber(maxRange) {
     const randomIndex = Math.floor(Math.random() * Math.floor(maxRange));
     return randomIndex;
@@ -46,7 +57,7 @@ class Game {
 
   createPuzzles() {
     const puzzleBank = this.createPuzzleBank();
-    for (let i = 1; i < 6; i++) {
+    for (let i = 1; i < 5; i++) {
       let index = this.createRandomNumber(puzzleBank.length);
       this.puzzles.push(...puzzleBank.splice(index, 1));
     }
@@ -54,6 +65,11 @@ class Game {
   
   createWheel() {
     this.currentWheel = new Wheel();
+    this.currentWheel.createWheelElements();
+  }
+
+  createBonusWheel() {
+    this.currentWheel = new BonusWheel();
     this.currentWheel.createWheelElements();
   }
 
@@ -137,7 +153,7 @@ class Game {
   intakePhrase(guess) {
     if (this.currentPuzzle.checkAnswer(guess)) {
       let winner = this.players[this.playersTurnIndex];
-      winner.grandScore = winner.currentScore;
+      winner.grandScore += winner.currentScore;
       domUpdates.displayGrandScore(winner.grandScore, winner.name);
       domUpdates.displayRoundWinner(winner.name, this.currentRound);
       setTimeout(() => {
@@ -145,8 +161,8 @@ class Game {
         this.players.forEach((player) => {
           player.currentScore = 0;
         })
-        this.createNewRound();
-        domUpdates.resetLetters();
+      this.createNewRound();
+      domUpdates.resetLetters();
       }, 3000); 
     } else {
       this.changePlayerTurn();
@@ -156,7 +172,9 @@ class Game {
 
   createNewRound() {
     if (this.currentRound === 4) {
-      this.declareWinner();
+      this.determineWinner();
+      domUpdates.emptyPuzzleSection();
+      domUpdates.displayWinner(this.grandWinner.winner.name);
     } else {
       this.currentRound++
       this.createWheel();
@@ -164,21 +182,31 @@ class Game {
       this.players.forEach((player) => {
         domUpdates.displayUpdatedScore(player.currentScore, player.name);
       });
-      domUpdates.displayPuzzle((Array.from(this.currentPuzzle.answer)), this.currentPuzzle.category);
+      domUpdates.displayPuzzle(this.currentPuzzle.answer, this.currentPuzzle.category);
       domUpdates.displayCurrentRound(this.currentRound);
       domUpdates.displaySpinInstructions(this.players[this.playersTurnIndex].name);
       domUpdates.highlightCurrentUserCard(this.players[this.playersTurnIndex].name);
     }
   }
 
-  declareWinner() {
+  determineWinner() {
     let highest = 0;
-    this.grandWinner = this.players.reduce((obj, player) => {
+    let gameWinner = this.players.reduce((obj, player) => {
       if (player.grandScore > highest) {
         highest = player.grandScore;
         obj.winner = player;
       }
+      return obj;
     }, {});
+    this.grandWinner = gameWinner;
+  }
+
+  startBonusRound() {
+    this.createBonusPuzzle();
+    domUpdates.unhighlightPrevUserCard(this.players[this.playersTurnIndex].name);
+    domUpdates.highlightCurrentUserCard(this.grandWinner.winner.name);
+    domUpdates.setupBonusRoundDisplay(this.currentPuzzle.answer, this.currentPuzzle.category);
+    this.createBonusWheel();
   }
 
 }

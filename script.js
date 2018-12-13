@@ -62,5 +62,13 @@ $('.js-restart-btn').on('click', () => {
   location.reload();
 });
 
+// 
+$('.js-puzzle-section').on('click', function(event) {
+  if ($(event.target).hasClass('js-bonus-round-btn')) {
+    game.startBonusRound();
+  }
+})
+
+
 
 

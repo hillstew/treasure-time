@@ -287,6 +287,26 @@ span {
   align-items: center;
 }
 
+.flex-answer {
+  display: flex;
+  margin: auto;
+  width: 450px;
+}
+
+.answer-input {
+  background-color: #b9cdfb;
+  border: 2px solid transparent;
+  flex: 1;
+  height: 35px;
+}
+
+.answer-submit-btn {
+  background-color: #125af5;
+  border: 2px solid transparent;
+  color: #e8effd;
+  height: 35px;
+}
+
 .consonant{
   border: 1px solid #b9cdfb;
   border-radius: 50%;
@@ -362,4 +382,14 @@ span {
   color: #575758;
   padding: 5px;
 }
+
+.bonus-round-btn {
+  background-color: #125af5;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  color: #e8effd;
+  height: 50px;
+}
+
+
 

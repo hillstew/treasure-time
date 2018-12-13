@@ -21,11 +21,7 @@ describe('it should create a wheel', function() {
 
   it('should create wheel elements', function() {
     wheel.createWheelElements();
-    expect(wheel.elements).to.be.an('array').to.have.lengthOf(6)
-    wheel.elements.forEach(function(element) {
-      expect(element).to.not.be.null; 
-      expect(element).to.not.be.undefined;
-    });
+    expect(wheel.elements).to.be.an('array').to.have.lengthOf(6);
   });
 
   it('should be able to generate a number given a max range', function() {

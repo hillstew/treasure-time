@@ -11,7 +11,7 @@ const Game = require('../class/Game.js');
 const spies = require('chai-spies');
 chai.use(spies);
 
-describe('it should create a game ', function() {
+describe('Game', function() {
   let game;
 
   beforeEach( function() {
@@ -37,7 +37,8 @@ describe('it should create a game ', function() {
       'hideStartScreen', 
       'removeClass', 
       'resetLetters', 
-      'unhighlightPrevUserCard'
+      'setupBonusRoundDisplay'
+      'unhighlightPrevUserCard',
       ], () => true);
   });
 
@@ -47,13 +48,13 @@ describe('it should create a game ', function() {
 
   it('it should start a game', function() {
     game.start();
-    expect(domUpdates.getPlayerNames).to.have.been.called(1);
-    expect(domUpdates.hideStartScreen).to.have.been.called(1);
-    expect(domUpdates.displayPlayerNames).to.have.been.called(1);
     expect(game.currentWheel).to.have.property('elements').with.lengthOf(6);
     expect(game).to.have.property('players').with.lengthOf(3);
     expect(game).to.have.property('puzzles').with.lengthOf(4);
     expect(game.currentPuzzle).to.be.an.instanceOf(Puzzle);
+    expect(domUpdates.getPlayerNames).to.have.been.called(1);
+    expect(domUpdates.hideStartScreen).to.have.been.called(1);
+    expect(domUpdates.displayPlayerNames).to.have.been.called(1);
     expect(domUpdates.displayPuzzle).to.have.been.called(1);
     expect(domUpdates.displayCurrentRound).to.have.been.called(1);
     expect(domUpdates.displaySpinInstructions).to.have.been.called(1);
@@ -65,19 +66,14 @@ describe('it should create a game ', function() {
     game.createPlayers(playerNames);
     expect(game.players).to.have.lengthOf(3);
     expect(game.players[0, 1, 2]).to.be.an.instanceOf(Player);
-    expect(game.players[0].name).to.equal('Hank');
-    game.players.forEach(function(player) {
-      expect(player).to.be.an('object').that.has.all.keys('name', 'currentScore', 'grandScore');
-    });
   });
 
-  it('should return an array of puzzles', function() {
-    let bankOfPuzzles = game.createPuzzleBank();
-    expect(bankOfPuzzles).to.be.instanceOf(Array);
-    expect(bankOfPuzzles).to.have.lengthOf(96);
-    bankOfPuzzles.forEach(function(puzzle) {
-      expect(puzzle).to.be.an('object').that.has.all.keys('category', 'number_of_words', 'total_number_of_letters', 'first_word', 'description', 'correct_answer');
-    });
+  describe('createPuzzleBank', function() {
+    it('should return an array of puzzles', function() {
+      let bankOfPuzzles = game.createPuzzleBank();
+      expect(bankOfPuzzles).to.be.instanceOf(Array);
+      expect(bankOfPuzzles).to.have.lengthOf(96);
+    });  
   });
 
   it('should be able to generate a number given a max range', function() {
