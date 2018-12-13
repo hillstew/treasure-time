@@ -47,7 +47,6 @@ class Game {
     const randomIndex = this.createRandomNumber(puzzleBankToUse.length);
     let bonusPuzzle = new Puzzle(puzzleBankToUse[randomIndex]);
     this.currentPuzzle = bonusPuzzle;
-    console.log('we reassigned the current puzzle: ', this.currentPuzzle);
   }
 
   createRandomNumber(maxRange) {
@@ -85,7 +84,7 @@ class Game {
       domUpdates.displayNotInPuzzle();
       setTimeout(function() {
         domUpdates.hideUserMessage();
-      }, 5000); 
+      }, 2000); 
       this.changePlayerTurn();
     }
     domUpdates.enableElement('.js-spin-btn');
@@ -112,7 +111,7 @@ class Game {
       
       setTimeout(function() {
         domUpdates.hideUserMessage()
-      }, 3000); 
+      }, 2000); 
       
       this.changePlayerTurn();
       domUpdates.displaySpinInstructions(this.players[this.playersTurnIndex].name);
@@ -121,7 +120,7 @@ class Game {
       domUpdates.displayUserMessage('LOSE A TURN');
       setTimeout(function() {
         domUpdates.hideUserMessage()
-      }, 3000); 
+      }, 2000); 
       this.changePlayerTurn();
       domUpdates.displaySpinInstructions(this.players[this.playersTurnIndex].name); 
       domUpdates.enableElement('.js-spin-btn');
@@ -163,7 +162,7 @@ class Game {
         })
       this.createNewRound();
       domUpdates.resetLetters();
-      }, 3000); 
+      }, 2000); 
     } else {
       this.changePlayerTurn();
       domUpdates.displaySpinInstructions(this.players[this.playersTurnIndex].name);
@@ -172,6 +171,7 @@ class Game {
 
   createNewRound() {
     if (this.currentRound === 4) {
+      this.currentRound++;
       this.determineWinner();
       domUpdates.emptyPuzzleSection();
       domUpdates.displayWinner(this.grandWinner.winner.name);
@@ -207,6 +207,24 @@ class Game {
     domUpdates.highlightCurrentUserCard(this.grandWinner.winner.name);
     domUpdates.setupBonusRoundDisplay(this.currentPuzzle.answer, this.currentPuzzle.category);
     this.createBonusWheel();
+  }
+
+  intakeBonusInputs(lettersToCheck) {
+    lettersToCheck.forEach((letter) => {
+      this.currentPuzzle.validateGuess(letter.toUpperCase());
+    });
+  }
+
+  intakeBonusPhrase(guess) {
+    if (this.currentPuzzle.checkAnswer(guess)) {
+      let winner = this.players[this.playersTurnIndex];
+      winner.grandScore += this.currentWheel.currentElement;
+      domUpdates.displayGrandScore(winner.grandScore, winner.name);
+      $('.js-user-instructions').empty().append(`<h2>Congratulations ${winner.name}! You guessed correctly and now you can take home your treasure chest of $${winner.grandScore}</h2>`)
+    } else {
+      let winner = this.players[this.playersTurnIndex];
+      $('.js-user-instructions').empty().append(`<h2>Sorry ${winner.name}, you guessed incorrectly. However you still get to go home with your treasure chest of $${winner.grandScore}</h2>`)
+    }
   }
 
 }

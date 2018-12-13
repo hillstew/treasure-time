@@ -13,7 +13,7 @@ describe('it should create a wheel', function() {
   let bonusWheel;
   beforeEach( function() {
     bonusWheel = new BonusWheel();
-    chai.spy.on(global.domUpdates, ['displaySpunElement', 'disableElement'], () => true);
+    chai.spy.on(global.domUpdates, ['displaySpunElement', 'disableElement', 'displayBonusRoundInputs'], () => true);
   })
 
   afterEach(() => {

@@ -20,6 +20,14 @@ class BonusWheel extends Wheel {
     });
   }
 
+  spin() {
+    let index = this.createRandomNumber(this.elements.length);
+    this.currentElement = this.elements[index];
+    domUpdates.displaySpunBonusElement(this.currentElement);
+    domUpdates.displayBonusRoundInputs();
+    domUpdates.disableElement('.js-spin-btn', '#b1b2b4');
+  }
+
 }
 
 if (typeof module !== 'undefined') {

@@ -102,7 +102,6 @@ const domUpdates = {
       let specialChars = ['\u0027', '\u0026', '\u002d'];
       if (!specialChars.includes(char) && consonantsToShow.includes(char)) {
         puzzleSection.append(`<p class="puzzle-letters bonus-blue-letter">${char}</p>`);
-        //disable the letter bank for the matching character
       } else if (!specialChars.includes(char)) {
         puzzleSection.append(`<p class="puzzle-letters">${char}</p>`);
       } else if (specialChars.includes(char)) {
@@ -113,6 +112,10 @@ const domUpdates = {
 
   displaySpunElement(element, name) {
     $('.js-user-instructions').empty().append(`<h3>You turned towards a treasure trove of $${element}</h3><p>To claim the treasure, choose a letter below in hopes it matches the phrase.</p>`);
+  },
+
+  displaySpunBonusElement(element) {
+    $('.js-user-instructions').empty().append(`<h3>You turned towards a bonus treasure trove of $${element}!</h3><p>Below you are able to input up to one vowel guess and three consonant guesses. When ready press submit.</p>`);
   },
 
   disableElement(nameOfClass, color) {
@@ -129,6 +132,7 @@ const domUpdates = {
     let targetCard = $(`article:contains(${playerName})`);
     targetCard.find('.js-round-score-num').text(score);
   },
+
   displayGrandScore(grandScore, winnerName) {
     let targetCard = $(`article:contains(${winnerName})`);
     targetCard.find('.js-grand-score').text(`Total: ${grandScore}`);
@@ -226,13 +230,29 @@ const domUpdates = {
 
   setupBonusRoundDisplay(answer, category) {
     $('.user-section').show();
-    $('.letters-section').show();
+    $('.js-vowel-btn').hide();
+    $('.js-solve-btn').hide();
     $('.js-round-display').text(`Bonus Treasure Round`);
     $('.js-puzzle-section').css('display', 'flex');
     $('.js-puzzle-section').css('flex-direction', 'row');
     this.displayBonusPuzzle(answer, category);
-    //generate random indexes
-    //reveal those letters only if they are not included in [a, e, i ,o ,u]
+    $('.js-user-instructions').empty().append(`<h3>Click the spin button to select the bonus prize</h3>`);
+  },
+
+  displayBonusRoundInputs(){
+    $('.js-spin-btn').hide();
+    $('.user-section').css('justify-content', 'center');
+    $('.letters-section').hide();
+    $('.js-bonus-input-sect').show();
+  },
+
+  getBonusInputs() {
+    return [
+      $('.js-bonus-inputs1').val(), 
+      $('.js-bonus-inputs2').val(), 
+      $('.js-bonus-inputs3').val(),
+      $('.js-bonus-inputs4').val()
+    ];
   }
 }
 

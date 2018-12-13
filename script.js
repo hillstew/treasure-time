@@ -6,7 +6,11 @@ $('.js-start-btn').on('click', function() {
 
 $('.js-spin-btn').on('click', function() {
   game.currentWheel.spin();
-  game.checkWheelElement();
+  
+  if (game.currentRound < 5) {
+    game.checkWheelElement();
+  }
+
 });
 
 $('.js-letters').on('click', function(event) {
@@ -62,12 +66,32 @@ $('.js-restart-btn').on('click', () => {
   location.reload();
 });
 
-// 
 $('.js-puzzle-section').on('click', function(event) {
   if ($(event.target).hasClass('js-bonus-round-btn')) {
     game.startBonusRound();
   }
+});
+
+$('.js-bonus-inputs-btn').on('click', function(event) {
+  let letters = domUpdates.getBonusInputs()
+  game.intakeBonusInputs(letters);
+  $('.js-user-instructions').empty().append(`<h3>Try to solve the puzzle to claim your treasure</h3>`)
+  $('.js-bonus-input-sect').empty().append(`
+    <input class="solve-bonus-input js-solve-bonus-input" type="text">
+    <button class="solve-bonus-btn js-solve-bonus-btn">Solve</button>
+    `)
+});
+
+$('.js-bonus-input-sect').on('click', function(event) {
+  let bonusGuess = $('.js-solve-bonus-input').val()
+  
+  if ($(event.target).hasClass('js-solve-bonus-btn')) {
+    game.intakeBonusPhrase(bonusGuess);
+    $('.js-solve-bonus-input').hide();
+    $('.js-solve-bonus-btn').hide();   
+  }
 })
+  
 
 
 

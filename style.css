@@ -395,5 +395,32 @@ span {
   color: #125af5;
 }
 
+.js-bonus-input-sect {
+  display: none;
+}
+
+.flex-bonus-inputs-div {
+  display: flex;
+  width: 150px;
+}
+
+.flex-bonus-inputs {
+  flex: 1;
+}
+
+.bonus-inputs-btn,
+.solve-bonus-btn {
+  background-color: #125af5;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  color: #e8effd;
+  height: 35px;
+}
+
+.flex-bonus-labels {
+  width: 120px;
+  padding-right: 30px;
+}
+
 
 
