@@ -10,7 +10,6 @@ $('.js-spin-btn').on('click', function() {
   if (game.currentRound < 5) {
     game.checkWheelElement();
   }
-
 });
 
 $('.js-letters').on('click', function(event) {
@@ -62,7 +61,6 @@ $('.js-user-instructions').on('click', function(event) {
 })
 
 $('.js-restart-btn').on('click', () => {
-  console.log('hi')
   location.reload();
 });
 
@@ -90,7 +88,7 @@ $('.js-bonus-input-sect').on('click', function(event) {
     $('.js-solve-bonus-input').hide();
     $('.js-solve-bonus-btn').hide();   
   }
-})
+});
   
 
 
