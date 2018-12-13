@@ -19,7 +19,8 @@ describe('Game', function() {
     chai.spy.on(global.domUpdates, [
       'displayCurrentRound', 
       'displayGrandScore', 
-      'displayRoundWinner', 
+      'displayRoundWinner',
+      'displayLetter', 
       'displayNotInPuzzle', 
       'displayPlayerNames', 
       'displayPuzzle', 
@@ -75,52 +76,216 @@ describe('Game', function() {
     });  
   });
 
-  it('should be able to generate a number given a max range', function() {
-    let maxRange = 45;
-    let num = game.createRandomNumber(maxRange);
-    expect(num).to.be.within(0, maxRange);
+  describe('createBonusPuzzle', function() {
+    it('should create a new puzzle for the bonus round', function() {
+      game.createBonusPuzzle()
+      expect(game.currentPuzzle).to.be.instanceOf(Puzzle)
+      expect(game.currentPuzzle.answer.length).to.be.within(7, 20)
+    });  
   });
 
-  it('should be able to return an array of 5 puzzles', function() {
-    game.createPuzzles();
-    expect(game.puzzles).to.have.lengthOf(4);
-    game.puzzles.forEach(function(puzzle) {
-      expect(puzzle).to.be.an('object').that.has.all.keys('category', 'number_of_words', 'total_number_of_letters', 'first_word', 'description', 'correct_answer');
+
+  describe('createRandomNumber', function() {
+    it('should be able to generate a number given a max range', function() {
+      let maxRange = 45;
+      let num = game.createRandomNumber(maxRange);
+      expect(num).to.be.within(0, maxRange);
     });
   });
 
-  it('should create an instance of Wheel', function() {
-    game.createWheel();
-    expect(game.currentWheel).to.be.instanceOf(Wheel);
-    expect(game.currentWheel).to.have.property('elements').with.lengthOf(6);
+  describe('createPuzzles', function() {
+    it('should be able to return an array of 5 puzzles', function() {
+      game.createPuzzles();
+      expect(game.puzzles).to.have.lengthOf(4);
+      game.puzzles.forEach(function(puzzle) {
+        expect(puzzle).to.be.an('object').that.has.all.keys('category', 'number_of_words', 'total_number_of_letters', 'first_word', 'description', 'correct_answer');
+      });
+    });
   });
 
-  it.skip('should intake a users guess', function() {
-    let userGuess = 'C';
-    game.intakeGuess(userGuess);
+  describe('createWheel', function() {
+    it('should create an instance of Wheel', function() {
+      game.createWheel();
+      expect(game.currentWheel).to.be.instanceOf(Wheel);
+    });
   });
 
-  it.skip('should be able to change the player turn index', function() {
-    game.changePlayerTurn();
+  describe('createBonusWheel', function() {
+    it('should create an instance of Bonus Wheel', function() {
+      game.createBonusWheel();
+      expect(game.currentWheel).to.be.instanceOf(BonusWheel);
+    });
   });
 
-  it.skip('should check wheel element to see if bankrupt or lose-a-turn', function() {
-    game.checkWheelElements();
+  describe('intakeGuess', function() {
+    it('should intake a users guess', function() {
+      let players = ['first', 'second', 'third']
+      players.forEach((playerName) => {
+        let player = new Player(playerName);
+        game.players.push(player);
+      });
+
+      let puzzleObj = {  
+        category: 'The 90s',
+        number_of_words: 1,
+        total_number_of_letters: 7,
+        first_word: 7, 
+        description: 'Puzzles pertaining to the decade in question.',
+        correct_answer: 'Beepers',
+      }
+      game.createWheel()
+      game.currentPuzzle = new Puzzle(puzzleObj)
+      let userGuess = 'P';
+      game.intakeGuess(userGuess);
+      userGuess = 'I'
+      game.intakeGuess(userGuess);
+    });
   });
 
-  it.skip('should check if a player can buy a vowel', function() {
-    game.canPlayerBuyVowel();
+  describe('changePlayerTurn', function() {
+    it('should be able to change the player turn index', function() {
+      let players = ['first', 'second', 'third']
+      players.forEach((playerName) => {
+        let player = new Player(playerName);
+        game.players.push(player);
+      });
+      game.playersTurnIndex = 0
+      game.changePlayerTurn();
+      expect(domUpdates.unhighlightPrevUserCard).to.have.been.called(1);
+      expect(game.playersTurnIndex).to.equal(1)
+    });
   });
 
-  it.skip('should let player buy a vowel', function() {
-    game.letPlayerBuyVowel();
+  describe('checkWheelElement', function() {
+    it('should check wheel element after player spins to see if bankrupt', function() {
+      let players = ['first', 'second', 'third']
+      players.forEach((playerName) => {
+        let player = new Player(playerName);
+        game.players.push(player);
+      });
+      game.players[game.playersTurnIndex].currentScore = 2300;
+      game.createWheel();
+      game.currentWheel.currentElement = 'BANKRUPT'
+      game.checkWheelElement();
+      expect(game.players[game.playersTurnIndex - 1].currentScore).to.equal(0);
+      expect(game.playersTurnIndex).to.equal(1);
+    });
+    it('should check wheel element after player spins to see if lose-a-turn', function() {
+      let players = ['first', 'second', 'third']
+      players.forEach((playerName) => {
+        let player = new Player(playerName);
+        game.players.push(player);
+      });
+      game.players[game.playersTurnIndex].currentScore = 2300;
+      game.createWheel();
+      game.currentWheel.currentElement = 'LOSE A TURN'
+      game.checkWheelElement();
+      expect(game.players[game.playersTurnIndex - 1].currentScore).to.equal(2300);
+      expect(game.playersTurnIndex).to.equal(1);
+    });
   });
 
-  it.skip('should intake a users guessed phrase', function() {
-    game.intakePhrase();
+  describe('canPlayerBuyVowel & letPlayerBuyVowel', function() {
+    it('should check if a player can buy a vowel', function() {
+      let players = ['first', 'second', 'third']
+      players.forEach((playerName) => {
+        let player = new Player(playerName);
+        game.players.push(player);
+      });
+      game.createWheel();
+      game.currentWheel.currentElement = 600
+      game.players[game.playersTurnIndex].currentScore = 2300;
+      game.canPlayerBuyVowel();
+      expect(game.currentWheel.currentElement).to.equal(-100);
+      game.currentWheel.currentElement = 700
+      game.players[game.playersTurnIndex].currentScore = 0;
+      game.canPlayerBuyVowel();
+      expect(game.currentWheel.currentElement).to.equal(700);
+    });
   });
 
-  it.skip('should be able to create a new round', function() {
-    game.createNewRound();
+  describe('inTakePhrase', function() {
+    it('should intake a users guessed phrase, if wrong update player turn index, otherwise update players grand score', function() {
+      let players = ['first', 'second', 'third']
+      players.forEach((playerName) => {
+        let player = new Player(playerName);
+        game.players.push(player);
+      });
+      let puzzleObj = {  
+        category: 'The 90s',
+        number_of_words: 1,
+        total_number_of_letters: 7,
+        first_word: 7, 
+        description: 'Puzzles pertaining to the decade in question.',
+        correct_answer: 'Beepers',
+      }
+      game.currentPuzzle = new Puzzle(puzzleObj);
+      let guess = 'Wrong';
+      game.intakePhrase(guess);
+      expect(game.playersTurnIndex).to.equal(1)
+      game.players[game.playersTurnIndex].currentScore = 900;
+      game.players[game.playersTurnIndex].grandScore = 0;
+      guess = 'Beepers';
+      game.intakePhrase(guess);
+      expect(game.players[game.playersTurnIndex].grandScore).to.equal(900);
+    });
   });
+
+  describe('createNewRound', function() {
+    it('should be able to create a new round', function() {
+      let players = ['first', 'second', 'third']
+      players.forEach((playerName) => {
+        let player = new Player(playerName);
+        game.players.push(player);
+      });
+      game.puzzles = [{  
+        category: 'The 90s',
+        number_of_words: 1,
+        total_number_of_letters: 7,
+        first_word: 7, 
+        description: 'Puzzles pertaining to the decade in question.',
+        correct_answer: 'Mousepad',
+      }]
+      game.createNewRound();
+      expect(game.currentRound).to.equal(2);
+      expect(game.currentPuzzle.answer).to.equal('MOUSEPAD');
+    });
+  });
+
+  describe('determineWinner', function() {
+    it('should be able to determine and assign a grand winner', function() {
+      let players = ['first', 'second', 'third']
+      players.forEach((playerName) => {
+        let player = new Player(playerName);
+        game.players.push(player);
+      });
+      game.players[0].grandScore = 1200;
+      game.players[1].grandScore = 4450;
+      game.players[2].grandScore = 340;
+      game.determineWinner()
+      expect(game.grandWinner.winner.name).to.equal('second');
+    });
+  });
+
+  describe('startBonusRound', function() {
+    it('should be able to start a bonus round and instantiate a BonusWheel', function() {
+      let players = ['first', 'second', 'third']
+      players.forEach((playerName) => {
+        let player = new Player(playerName);
+        game.players.push(player);
+      });
+      game.grandWinner = { winner: { name: 'second', currentScore: 0, grandScore: 4450 }}
+      game.startBonusRound();
+      expect(game.currentWheel).to.be.an.instanceOf(BonusWheel);
+    });
+  });
+
+  
+
+
+
+
+
+
+
 })
