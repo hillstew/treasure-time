@@ -160,8 +160,8 @@ class Game {
         this.players.forEach((player) => {
           player.currentScore = 0;
         })
-      this.createNewRound();
-      domUpdates.resetLetters();
+        this.createNewRound();
+        domUpdates.resetLetters();
       }, 2000); 
     } else {
       this.changePlayerTurn();
