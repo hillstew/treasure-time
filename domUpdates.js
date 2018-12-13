@@ -53,6 +53,7 @@ const domUpdates = {
         })
       })
     } else {
+      puzzleSection.css('display', 'flex');
       answer = [...answer]
       answer.forEach((char) => {
         let whiteSpace = '\u0020'
