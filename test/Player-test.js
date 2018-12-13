@@ -7,7 +7,7 @@ const expect = chai.expect;
 const spies = require('chai-spies');
 chai.use(spies);
 
-describe('it should create a players', function() {
+describe('Player', function() {
   let player;
   let name = 'Hank';
 
@@ -24,9 +24,10 @@ describe('it should create a players', function() {
     expect(player.name).to.equal('Hank');
   });
 
-  it.skip('should update its current score', function() {
+  it('should update its current score', function() {
     let score = 500;
     player.updateScore(score);
     expect(player.currentScore).to.equal(500);
+    expect(domUpdates.displayUpdatedScore).to.have.been.called(1);
   });
 })

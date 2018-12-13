@@ -7,7 +7,7 @@ const expect = chai.expect;
 const spies = require('chai-spies');
 chai.use(spies);
 
-describe('it should create a puzzle', function() {
+describe('Puzzle', function() {
   let puzzle;
   let puzzleObj = {  
     category: 'The 90s',
