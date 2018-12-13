@@ -9,18 +9,22 @@ const spies = require('chai-spies');
 chai.use(spies);
 
 
-describe('it should create a wheel', function() {
+describe('BonusWheel', function() {
   let bonusWheel;
   beforeEach( function() {
     bonusWheel = new BonusWheel();
-    chai.spy.on(global.domUpdates, ['displaySpunElement', 'disableElement', 'displayBonusRoundInputs'], () => true);
+    chai.spy.on(global.domUpdates, ['displaySpunElement', 'disableElement', 'displayBonusRoundInputs', 'displaySpunBonusElement'], () => true);
   })
 
   afterEach(() => {
     chai.spy.restore(global.domUpdates);
   })
 
-  it.skip('should create bonus wheel elements', function() {
+  it('should have a multiplier property of 4 to increase element prizes by', function() {
+    expect(bonusWheel.multiplier).to.equal(4)
+  });
+
+  it('should create bonus wheel elements', function() {
     bonusWheel.createWheelElements();
     expect(bonusWheel.elements).to.be.an('array').to.have.lengthOf(6)
     bonusWheel.elements.forEach(function(element) {
@@ -29,11 +33,12 @@ describe('it should create a wheel', function() {
     });
   });
 
-  it.skip('should return one element from current wheel elements', function() {
+  it('should return one element from current wheel elements', function() {
     bonusWheel.createWheelElements()
     bonusWheel.spin();
     expect(bonusWheel.currentElement).to.be.oneOf(bonusWheel.elements)
-    expect(domUpdates.displaySpunElement).to.have.been.called(1);
+    expect(domUpdates.displaySpunBonusElement).to.have.been.called(1);
+    expect(domUpdates.displayBonusRoundInputs).to.have.been.called(1);
     expect(domUpdates.disableElement).to.have.been.called(1);
   });
 })

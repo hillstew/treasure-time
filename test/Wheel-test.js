@@ -8,7 +8,7 @@ const spies = require('chai-spies');
 chai.use(spies);
 
 
-describe('it should create a wheel', function() {
+describe('Wheel', function() {
   let wheel;
   beforeEach( function() {
     wheel = new Wheel();
@@ -36,6 +36,6 @@ describe('it should create a wheel', function() {
     expect(wheel.currentElement).to.be.oneOf(wheel.elements)
     expect(domUpdates.displaySpunElement).to.have.been.called(1);
     expect(domUpdates.disableElement).to.have.been.called(1);
-    
   });
+  
 })

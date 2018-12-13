@@ -20,10 +20,8 @@ class Wheel {
   spin() {
     let index = this.createRandomNumber(this.elements.length);
     this.currentElement = this.elements[index];
-
     domUpdates.displaySpunElement(this.currentElement);
     domUpdates.disableElement('.js-spin-btn', '#b1b2b4');
-
   }
 }
 
