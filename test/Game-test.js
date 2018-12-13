@@ -2,7 +2,6 @@ global.data = require('../dataset.js');
 global.domUpdates = require('../domUpdates.js');
 global.Player = require('../class/Player.js');
 global.Puzzle = require('../class/Puzzle.js');
-global.BonusPuzzle = require('../class/BonusPuzzle.js');
 global.Wheel = require('../class/Wheel.js');
 global.BonusWheel = require('../class/BonusWheel.js');
 const chai = require('chai');
@@ -37,8 +36,8 @@ describe('Game', function() {
       'hideStartScreen', 
       'removeClass', 
       'resetLetters', 
-      'setupBonusRoundDisplay'
-      'unhighlightPrevUserCard',
+      'setupBonusRoundDisplay',
+      'unhighlightPrevUserCard'
       ], () => true);
   });
 
@@ -50,7 +49,7 @@ describe('Game', function() {
     game.start();
     expect(game.currentWheel).to.have.property('elements').with.lengthOf(6);
     expect(game).to.have.property('players').with.lengthOf(3);
-    expect(game).to.have.property('puzzles').with.lengthOf(4);
+    expect(game).to.have.property('puzzles').with.lengthOf(3);
     expect(game.currentPuzzle).to.be.an.instanceOf(Puzzle);
     expect(domUpdates.getPlayerNames).to.have.been.called(1);
     expect(domUpdates.hideStartScreen).to.have.been.called(1);
@@ -84,7 +83,7 @@ describe('Game', function() {
 
   it('should be able to return an array of 5 puzzles', function() {
     game.createPuzzles();
-    expect(game.puzzles).to.have.lengthOf(5);
+    expect(game.puzzles).to.have.lengthOf(4);
     game.puzzles.forEach(function(puzzle) {
       expect(puzzle).to.be.an('object').that.has.all.keys('category', 'number_of_words', 'total_number_of_letters', 'first_word', 'description', 'correct_answer');
     });

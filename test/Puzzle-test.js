@@ -27,6 +27,15 @@ describe('it should create a puzzle', function() {
     chai.spy.restore(global.domUpdates);
   })
 
+  it('should have all properties from constructor', function() {
+    expect(puzzle.answer).to.equal('BEEPERS')
+    expect(puzzle.category).to.equal('The 90s')
+    expect(puzzle.description).to.equal('Puzzles pertaining to the decade in question.')
+    expect(puzzle.numberOfWords).to.equal(1)
+    expect(puzzle.totalLetters).to.equal(7)
+    expect(puzzle.lettersInFirst).to.equal(7)
+  });
+
   it('should be able validate the players guess as correct', function() {
     let guess = 'B';
     puzzle.validateGuess(guess);
@@ -40,13 +49,15 @@ describe('it should create a puzzle', function() {
     expect(puzzle.validateGuess(guess)).to.be.false  
   });
 
-  it.skip('should check if a letter is a vowel', function() {
+  it('should check if a letter is a vowel', function() {
     let selectedLetter = 'E';
     puzzle.isLetterAVowel(selectedLetter);
   });
 
-  it.skip('should check user guess and return whether it matches answer', function(){
+  it('should check user guess and return whether it matches answer', function() {
     let userGuess = 'Charger';
-    puzzle.checkAnswer(userGUess);
+    expect(puzzle.checkAnswer(userGuess)).to.be.false;
+    userGuess = 'Beepers';
+    expect(puzzle.checkAnswer(userGuess)).to.be.true;
   });
 })
