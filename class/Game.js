@@ -217,13 +217,13 @@ class Game {
 
   intakeBonusPhrase(guess) {
     if (this.currentPuzzle.checkAnswer(guess)) {
-      let winner = this.players[this.playersTurnIndex];
-      winner.grandScore += this.currentWheel.currentElement;
-      domUpdates.displayGrandScore(winner.grandScore, winner.name);
-      $('.js-user-instructions').empty().append(`<h2>Congratulations ${winner.name}! You guessed correctly and now you can take home your treasure chest of $${winner.grandScore}</h2>`)
+      let winner = this.grandWinner;
+      winner.winner.grandScore += this.currentWheel.currentElement;
+      domUpdates.displayGrandScore(winner.winner.grandScore, winner.winner.name);
+      domUpdates.displayWonBonusElement(winner.winner.grandScore, winner.winner.name)
     } else {
-      let winner = this.players[this.playersTurnIndex];
-      $('.js-user-instructions').empty().append(`<h2>Sorry ${winner.name}, you guessed incorrectly. However you still get to go home with your treasure chest of $${winner.grandScore}</h2>`)
+      let winner = this.grandWinner;
+      domUpdates.displayDidNotWinBonusElement(winner.winner.grandScore, winner.winner.name)
     }
   }
 

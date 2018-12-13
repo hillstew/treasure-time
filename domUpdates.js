@@ -239,7 +239,7 @@ const domUpdates = {
     $('.js-user-instructions').empty().append(`<h3>Click the spin button to select the bonus prize</h3>`);
   },
 
-  displayBonusRoundInputs(){
+  displayBonusRoundInputs() {
     $('.js-spin-btn').hide();
     $('.user-section').css('justify-content', 'center');
     $('.letters-section').hide();
@@ -253,6 +253,14 @@ const domUpdates = {
       $('.js-bonus-inputs3').val(),
       $('.js-bonus-inputs4').val()
     ];
+  },
+
+  displayWonBonusElement(grandScore, name) {
+    $('.js-user-instructions').empty().append(`<h2>Congratulations ${name}! You guessed correctly and now you can take home your treasure chest of $${grandScore}</h2>`);
+  },
+
+  displayDidNotWinBonusElement(grandScore, name) {
+    $('.js-user-instructions').empty().append(`<h2>Sorry ${name}, you guessed incorrectly. However you still get to go home with your treasure chest of $${grandScore}</h2>`);
   }
 }
 

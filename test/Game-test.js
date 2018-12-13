@@ -30,6 +30,8 @@ describe('Game', function() {
       'displayUserMessage', 
       'displayVowelError', 
       'displayVowelInstructions', 
+      'displayWinner',
+      'emptyPuzzleSection',
       'enableElement', 
       'hideUserMessage', 
       'highlightCurrentUserCard', 
@@ -38,7 +40,9 @@ describe('Game', function() {
       'removeClass', 
       'resetLetters', 
       'setupBonusRoundDisplay',
-      'unhighlightPrevUserCard'
+      'unhighlightPrevUserCard',
+      'displayWonBonusElement',
+      'displayDidNotWinBonusElement'
       ], () => true);
   });
 
@@ -280,7 +284,33 @@ describe('Game', function() {
     });
   });
 
-  
+  describe('intakeBonusPhrase', function() {
+    it('should intake player guessed phrase, if correct update grand score with bonus element', function() {
+      let players = ['first', 'second', 'third']
+      players.forEach((playerName) => {
+        let player = new Player(playerName);
+        game.players.push(player);
+      });
+      let puzzleObj = {  
+        category: 'The 90s',
+        number_of_words: 1,
+        total_number_of_letters: 7,
+        first_word: 7, 
+        description: 'Puzzles pertaining to the decade in question.',
+        correct_answer: 'Beepers',
+      }
+      game.createBonusWheel();
+      game.currentPuzzle = new Puzzle(puzzleObj);
+      game.grandWinner = { winner: { name: 'second', currentScore: 0, grandScore: 4450 }}
+      game.currentWheel.currentElement = 5000;
+      let guess = 'WRONG';
+      game.intakeBonusPhrase(guess);
+      expect(game.grandWinner.winner.grandScore).to.equal(4450);
+      guess = 'BEEPERS';
+      game.intakeBonusPhrase(guess);
+      expect(game.grandWinner.winner.grandScore).to.equal(9450);
+    });
+  });
 
 
 
