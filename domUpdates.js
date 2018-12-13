@@ -68,6 +68,32 @@ const domUpdates = {
     }
   },
 
+  displayBonusPuzzle(answer, category) {
+    $('.js-category').text(category);
+    answer = [...answer]
+      let vowels = ['a', 'e', 'i', 'o', 'u'];
+      let onlyConsonants = answer.filter(letter => {
+        return !vowels.includes(letter)
+      });
+      // tale word and pull out all vowels
+      // generate three random indexs with maxRange being consonatArray.length
+      // grab the three consonats at those three random indexs (from consonatArray)
+      // char is included in our consonatnsToShow array, make them blue;
+
+    answer.forEach((char) => {
+      let specialChars = ['\u0027', '\u0026', '\u002d'];
+      let vowels = ['a', 'e', 'i', 'o', 'u'];
+      if (!specialChars.includes(char)) {
+        //actual letters
+        //always show three random consonants
+        // 
+        puzzleSection.append(`<p class="puzzle-letters">${char}</p>`);
+      } else if (specialChars.includes(char)) {
+        puzzleSection.append(`<p class="special-char">${char}</p>`)
+      }
+    })
+  },
+
   displaySpunElement(element, name) {
     $('.js-user-instructions').empty().append(`<h3>You turned towards a treasure trove of $${element}</h3><p>To claim the treasure, choose a letter below in hopes it matches the phrase.</p>`);
   },
@@ -187,7 +213,7 @@ const domUpdates = {
     $('.js-round-display').text(`Bonus Treasure Round`);
     $('.js-puzzle-section').css('display', 'flex');
     $('.js-puzzle-section').css('flex-direction', 'row');
-    this.displayPuzzle(answer, category);
+    this.displayBonusPuzzle(answer, category);
     //generate random indexes
     //reveal those letters only if they are not included in [a, e, i ,o ,u]
   }
