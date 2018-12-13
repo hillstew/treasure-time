@@ -1,6 +1,6 @@
 class Game {
   constructor() {
-    this.currentRound = 4;
+    this.currentRound = 1;
     this.players = [];
     this.playersTurnIndex = 0;
     this.puzzles = [];

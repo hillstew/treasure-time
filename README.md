@@ -8,8 +8,8 @@ Treasure Time is an interactive three-player game where players take turns guess
 [GameTime](http://frontend.turing.io/projects/wheel-of-fortune.html) project from Turing School of Software and Design 
 
 ### Set Up
-Clone the repo ```git clone git@github.com:trbachmann/wheel-of-fortune.git```  
-Run ```npm install``` from the project root directory
+```git clone git@github.com:trbachmann/wheel-of-fortune.git```  
+```npm install``` from the project root directory
 
 ### Built With
 * JavaScript
@@ -21,6 +21,10 @@ Run ```npm install``` from the project root directory
 
 ### UI Wireframe
 ![Initial Wireframe](Wireframe.jpg) 
+
+### Screenshots
+![Start Screen](treasure-time-start-screen.png) 
+![Game](treasure-time-game-screen.png) 
 
 ### Contributors
 [Hillary Stewart](https://github.com/hillstew)  
