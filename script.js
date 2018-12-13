@@ -1,6 +1,6 @@
 const game = new Game();
-
 $('.js-start-btn').on('click', function() {
+  $('.js-bonus-input-sect').hide();
   game.start();
 });
 
@@ -15,22 +15,38 @@ $('.js-spin-btn').on('click', function() {
 $('.js-letters').on('click', function(event) {
 
   if (!$('.js-spin-btn').is(':disabled')) {
-    alert('Please click on Spin, Solve Puzzle or Buy a Vowel before selecting a letter');
+    $('.js-error-popup').text(`Please click on Spin, Solve Puzzle or Buy a Vowel before selecting a letter`).show();
+
+    setTimeout(function() {
+      $('.js-error-popup').hide();
+    }, 2000); 
     return;
   };
 
   if ($(event.target).hasClass('disabled-letters')) {
-    alert('That letter has already been chosen. Please pick another letter');
+    $('.js-error-popup').text(`That letter has already been chosen. Please pick another letter`).show();
+
+    setTimeout(function() {
+      $('.js-error-popup').hide();
+    }, 2000); 
     return;
   } 
 
   if($(event.target).hasClass('temp-disable')) {
-    alert('You did not select a vowel. Chooses from the highlighted vowels below.');
+    $('.js-error-popup').text(`You did not select a vowel. Chooses from the highlighted vowels below.`).show();
+
+    setTimeout(function() {
+      $('.js-error-popup').hide();
+    }, 2000);
     return;
   }
 
   if($('.js-spin-btn').is(':disabled') && $(event.target).hasClass('vowel') && !$('.js-spin-btn').hasClass('vowel-time')) {
-    alert('You cannot pick a vowel. Please choose a consonant.');
+    $('.js-error-popup').text(`You cannot pick a vowel. Please choose a consonant.`).show();
+
+    setTimeout(function() {
+      $('.js-error-popup').hide();
+    }, 2000);
     return;
   }
 

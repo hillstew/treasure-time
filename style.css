@@ -17,10 +17,15 @@ main {
 
 aside {
   padding-left: 10%;
+  padding-top: 55px;
 }
 
 span {
   margin-right: 50px;
+}
+
+h1, h3 {
+  color: #575758;
 }
 
 .blue-bright {
@@ -123,6 +128,7 @@ span {
 }
 
 .round-score {
+  color: #575758;
   font-size: 0.85rem;
   font-weight: 400;
   margin-bottom: 0;
@@ -149,6 +155,12 @@ span {
 .flex-title-area {
   display: flex;
   justify-content: space-between;
+}
+
+.flex-title-area p {
+  color: #575758;
+  font-size: 1.5rem;
+  margin: 0;
 }
 
 .puzzle-section {
@@ -218,20 +230,28 @@ span {
   display: flex;
 }
 
-.user-popup {
+.user-popup,
+.error-popup {
   background-color: #125af5;
   border-radius: 10px;
   color: #f6f7fa;
   display: none;
-  font-size: 2rem;
+  font-size: 1.8rem;
   height: 170px;
   margin: 0 330px;
-  padding: 20px;
+  padding: 30px;
   position: absolute;
+  text-align: center;
   width: 690px;
 }
 
+.error-popup {
+  background-color: #b8cefb;
+  color: #575758;
+}
+
 .user-instructions {
+  color: #575758;
   font-family: font-family: 'Roboto', sans-serif;
   font-size: 1.3rem;
   margin-left: 20px;
@@ -249,6 +269,7 @@ span {
   border: none;
   border-radius: 10px;
   background-color: #e8eefd;
+  color: #575758;
   cursor: pointer;
   font-size: 1rem;
   margin: auto;
@@ -396,16 +417,19 @@ span {
 }
 
 .js-bonus-input-sect {
-  display: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .flex-bonus-inputs-div {
   display: flex;
-  width: 150px;
+  margin-bottom: 10px;
 }
 
 .flex-bonus-inputs {
-  flex: 1;
+  border: none;
+  height: 25px;
 }
 
 .bonus-inputs-btn,
@@ -417,9 +441,14 @@ span {
   height: 35px;
 }
 
+.bonus-inputs-btn {
+  margin-top: 15px;
+}
+
 .flex-bonus-labels {
-  width: 120px;
-  padding-right: 30px;
+  padding-top: 6px;
+  text-align: center;
+  width: 110px;
 }
 
 

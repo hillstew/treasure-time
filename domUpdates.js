@@ -156,7 +156,7 @@ const domUpdates = {
   },
 
   displaySpinInstructions(name) {
-    $('.js-user-instructions').empty().append(`<h2>Choose your adventure ${name}!</h2>
+    $('.js-user-instructions').empty().append(`<h3>Choose your adventure ${name}!</h3>
                                       <p class="user-choices">Click Spin, Solve Puzzle or Buy a Vowel.</p>
                                       <p class="vowel-reminder">Reminder it costs $100 to buy a vowel.</p>`);
     
@@ -184,7 +184,7 @@ const domUpdates = {
   },
 
   displayNotInPuzzle() {
-    $('.js-user-popup').text(`Arrgggghhh! Your letter is not in the puzzle. Yer turn is over.`).show(); 
+    $('.js-user-popup').text(`Arrgggghhh! Yer turn is over. Yer letter was not in the puzzle.`).show(); 
   },
 
   displayVowelError() {
@@ -223,7 +223,7 @@ const domUpdates = {
   displayWinner(winnerName) {
     $('.js-puzzle-section').css('flex-direction', 'column');
     $('.js-user-instructions').empty()
-    $('.js-puzzle-section').append(`<h2>Congratulations ${winnerName} you have the most treasure!</h2><p>Click below to start your bonus adventure for one last chance to get more treasure!</p><button class="bonus-round-btn js-bonus-round-btn">Start Bonus Treasure Round</button>`)
+    $('.js-puzzle-section').append(`<h3>Congratulations ${winnerName} you have the most treasure!</h3><p>Click below to start your bonus adventure for one last chance to get more treasure!</p><button class="bonus-round-btn js-bonus-round-btn">Start Bonus Treasure Round</button>`)
     $('.user-section').hide();
     $('.letters-section').hide();
   },
@@ -256,11 +256,11 @@ const domUpdates = {
   },
 
   displayWonBonusElement(grandScore, name) {
-    $('.js-user-instructions').empty().append(`<h2>Congratulations ${name}! You guessed correctly and now you can take home your treasure chest of $${grandScore}</h2>`);
+    $('.js-user-instructions').empty().append(`<h3>Congratulations ${name}! You guessed correctly and now you can take home your treasure chest of $${grandScore}</h3>`);
   },
 
   displayDidNotWinBonusElement(grandScore, name) {
-    $('.js-user-instructions').empty().append(`<h2>Sorry ${name}, you guessed incorrectly. However you still get to go home with your treasure chest of $${grandScore}</h2>`);
+    $('.js-user-instructions').empty().append(`<h3>Sorry ${name}, you guessed incorrectly. However you still get to go home with your treasure chest of $${grandScore}</h3>`);
   }
 }
 
