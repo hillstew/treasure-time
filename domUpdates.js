@@ -68,25 +68,42 @@ const domUpdates = {
     }
   },
 
+  createRandomNumber(maxRange) {
+    const randomIndex = Math.floor(Math.random() * Math.floor(maxRange));
+    return randomIndex;
+  },
+
   displayBonusPuzzle(answer, category) {
     $('.js-category').text(category);
+    let puzzleSection = $('.js-puzzle-section').empty();
     answer = [...answer]
-      let vowels = ['a', 'e', 'i', 'o', 'u'];
-      let onlyConsonants = answer.filter(letter => {
-        return !vowels.includes(letter)
-      });
-      // tale word and pull out all vowels
-      // generate three random indexs with maxRange being consonatArray.length
-      // grab the three consonats at those three random indexs (from consonatArray)
-      // char is included in our consonatnsToShow array, make them blue;
+    let vowels = ['A', 'E', 'I', 'O', 'U'];
+    let onlyConsonants = answer.reduce((arr, curr) => {
+        if (vowels.indexOf(curr) === -1) {
+          arr.push(curr);
+        }
+      return arr;
+    }, []);
+
+    let randomIndices = []
+    
+    for(let i = 0; i < 3; i++) {
+      let randomNum = this.createRandomNumber(onlyConsonants.length)
+      if (!randomIndices.includes(randomNum)) {
+        randomIndices.push(randomNum)
+      } 
+    }
+
+    let consonantsToShow = randomIndices.map(number => {
+      return onlyConsonants[number];
+    });
 
     answer.forEach((char) => {
       let specialChars = ['\u0027', '\u0026', '\u002d'];
-      let vowels = ['a', 'e', 'i', 'o', 'u'];
-      if (!specialChars.includes(char)) {
-        //actual letters
-        //always show three random consonants
-        // 
+      if (!specialChars.includes(char) && consonantsToShow.includes(char)) {
+        puzzleSection.append(`<p class="puzzle-letters bonus-blue-letter">${char}</p>`);
+        //disable the letter bank for the matching character
+      } else if (!specialChars.includes(char)) {
         puzzleSection.append(`<p class="puzzle-letters">${char}</p>`);
       } else if (specialChars.includes(char)) {
         puzzleSection.append(`<p class="special-char">${char}</p>`)
