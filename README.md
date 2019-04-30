@@ -1,4 +1,4 @@
-# Wheel of Fortune - Turing Mod 2 Project
+# Treasure Time - Turing Mod 2 Project
 Treasure Time is an interactive three-player game where players take turns guessing portions or all of the hidden phrase in an attempt to secure treasure. This game was designed based off of the classic Wheel of Fortune Game. The objective of this project was to implement an application using Object Oriented Programming principles. 
 
 ### Set Up
