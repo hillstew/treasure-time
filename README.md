@@ -6,7 +6,7 @@ Treasure Time is an interactive three-player game where players take turns guess
 ```npm install``` from the project root directory
 
 ### See It Live
-[Treasure Time](https://trbachmann.github.io/wheel-of-fortune/) on GitHub Pages
+[Treasure Time](https://hillstew.github.io/treasure-time/) on GitHub Pages
 
 ### Original Assignment
 [GameTime](http://frontend.turing.io/projects/wheel-of-fortune.html) project from Turing School of Software and Design 
